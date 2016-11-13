@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="8" tilewidth="80" tileheight="80">
+ <tileset firstgid="1" name="minecraft8" tilewidth="80" tileheight="80">
+  <image source="minecraft8.png" width="960" height="640"/>
+ </tileset>
+ <tileset firstgid="97" name="Wood3d" tilewidth="80" tileheight="80">
+  <image source="Wood3d.png" width="80" height="560"/>
+ </tileset>
+ <layer name="块层 1" width="12" height="8">
+  <data encoding="base64" compression="zlib">
+   eJwtw+c2ggEAANAPGZGRLZGWlbIrs8heR6WQ+f5P4f5wz7ldQRB022PIXvvsd8Cwgw4ZcdgRRx0z6rgTTjrltDPOOmfMeeMuuGjCJZOmTJsx67Irrrrmujk3zFtw0y233XHXPfctWrLsgYceeeyJp1aseua5NS+89Mprb7z1znsffPTJ5/91GzZ9sWXbV998t+OHn3757Y+//gFKzxIy
+  </data>
+ </layer>
+ <layer name="块层 2" width="12" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYCANJJKoPolE9ckkqk8hUX0qierTSFSfTqJ6AAleAr0=
+  </data>
+ </layer>
+</map>
