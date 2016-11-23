@@ -1,4 +1,5 @@
 # Ignored files:
 cocos2d
 proj.*
+!proj.win32/PlantsVsRabbits.sln
 
