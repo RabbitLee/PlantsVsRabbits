@@ -1,6 +1,8 @@
 #include "SunflowerManger.h"
 #include "Rain.h"
 
+SunflowerManger* SunflowerManger::mySunflowerManager = nullptr;
+
 bool SunflowerManger::init(){
 	myNumberOfClickedSunshine = 0;
 	initial();

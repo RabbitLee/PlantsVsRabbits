@@ -12,6 +12,16 @@ public:
 	void mutUpdate(float dt);
 	virtual Vector<Sprite*>* getPeaInRow(int row) { return NULL; }
 
+private:
+	static BlueEggManger* myBlueManager;
+
+public:
+	static BlueEggManger* getInstance() {
+		if (myBlueManager == nullptr) {
+			myBlueManager = BlueEggManger::create();
+		}
+		return myBlueManager;
+	}
 };
 
 #endif

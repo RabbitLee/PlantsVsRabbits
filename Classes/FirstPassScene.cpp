@@ -48,15 +48,15 @@ bool FirstPass::init(){
 
 	/* Planting */
 	selectPlant(NO_PLANT);
-	myPeaShooterManger = PeaShooterManger::create();
+	myPeaShooterManger = PeaShooterManger::getInstance();
 	this->addChild(myPeaShooterManger, PRIORITY_OF_SHOOTER);
-	myCarrotManger = CarrotManger::create();
+	myCarrotManger = CarrotManger::getInstance();
 	this->addChild(myCarrotManger, PRIORITY_OF_SHOOTER);
-	mySunflowerManger = SunflowerManger::create();
+	mySunflowerManger = SunflowerManger::getInstance();
 	this->addChild(mySunflowerManger, PRIORITY_OF_PLANT);
-	myWallNutManger = WallNutManger::create();
+	myWallNutManger = WallNutManger::getInstance();
 	this->addChild(myWallNutManger, PRIORITY_OF_PLANT);
-	myBlueEggManger = BlueEggManger::create();
+	myBlueEggManger = BlueEggManger::getInstance();
 	this->addChild(myBlueEggManger, PRIORITY_OF_BOMB);
 
 	for (int i = 2; i <= WIDTH; i++){

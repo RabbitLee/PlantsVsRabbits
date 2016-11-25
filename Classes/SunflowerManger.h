@@ -18,6 +18,16 @@ public:
 private:
 	int myNumberOfClickedSunshine;
 
+private:
+	static SunflowerManger* mySunflowerManager;
+
+public:
+	static SunflowerManger* getInstance() {
+		if (mySunflowerManager == nullptr) {
+			mySunflowerManager = SunflowerManger::create();
+		}
+		return mySunflowerManager;
+	}
 };
 
 #endif

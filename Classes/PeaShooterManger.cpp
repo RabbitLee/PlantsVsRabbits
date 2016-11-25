@@ -1,4 +1,5 @@
 #include "PeaShooterManger.h"
+PeaShooterManger* PeaShooterManger::myPeaShooterManager = nullptr;
 
 bool PeaShooterManger::init(){
 	initial();

@@ -10,6 +10,36 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Plants">
+      <UniqueIdentifier>{5d1b6ac0-3631-44ac-be81-151532ad9e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plants\BlueEgg">
+      <UniqueIdentifier>{cf8415c9-b145-4df9-9727-aa49b3c83d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plants\Carrot">
+      <UniqueIdentifier>{bb1bdde0-a671-4bac-bcdd-6bf0d1136372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rabbits">
+      <UniqueIdentifier>{02dd1887-aec9-403d-995e-3fb4de5e6a82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scenes">
+      <UniqueIdentifier>{a368415a-c4ea-49b5-b9a5-850f4d7de676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rabbits\EvilRabbit">
+      <UniqueIdentifier>{bd4363c1-87c8-4d51-83f5-f52b1af09e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plants\Sunflower">
+      <UniqueIdentifier>{8a65c4ea-7fcc-4c38-aabe-c012c9e437e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plants\Wallnut">
+      <UniqueIdentifier>{5c025db8-dfca-4b5f-971f-b4f019fc8fff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plants\Peashooter">
+      <UniqueIdentifier>{a07ee274-147a-4155-81a8-3117ba5db429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rabbits\Zombie">
+      <UniqueIdentifier>{d8dfc6bb-c5d4-41f8-81f7-fda9535dd93d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -18,80 +48,80 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AnotherFailureScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BlueEgg.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BlueEggManger.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Carrot.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CarrotManger.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EnemyManger.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Entity.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BlueEgg.cpp">
+      <Filter>src\Plants\BlueEgg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BlueEggManger.cpp">
+      <Filter>src\Plants\BlueEgg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AnotherFailureScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Carrot.cpp">
+      <Filter>src\Plants\Carrot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CarrotManger.cpp">
+      <Filter>src\Plants\Carrot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyManger.cpp">
+      <Filter>src\Rabbits</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\EvilRabbit.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Rabbits\EvilRabbit</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\EvilRabbitManger.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Rabbits\EvilRabbit</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\FailureScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\FirstPassPauseScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\FirstPassScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MusicScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PeaShooter.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Peashooter</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PeaShooterManger.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Peashooter</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlantManger.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Rain.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Sunflower.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Sunflower</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\SunflowerManger.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Sunflower</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\VictoryScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\WallNut.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Wallnut</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\WallNutManger.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Wallnut</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Zombie.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Rabbits\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ZombieManger.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Rabbits\Zombie</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,83 +131,83 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AnotherFailureScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BlueEgg.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BlueEggManger.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Carrot.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CarrotManger.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyManger.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Entity.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EvilRabbit.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EvilRabbitManger.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FailureScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FirstPassPauseScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\FirstPassScene.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameSettings.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\BlueEggManger.h">
+      <Filter>src\Plants\BlueEgg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BlueEgg.h">
+      <Filter>src\Plants\BlueEgg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AnotherFailureScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Carrot.h">
+      <Filter>src\Plants\Carrot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CarrotManger.h">
+      <Filter>src\Plants\Carrot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyManger.h">
+      <Filter>src\Rabbits</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EvilRabbit.h">
+      <Filter>src\Rabbits\EvilRabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EvilRabbitManger.h">
+      <Filter>src\Rabbits\EvilRabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FailureScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FirstPassPauseScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FirstPassScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\MusicScene.h">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PeaShooter.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Peashooter</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PeaShooterManger.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Peashooter</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlantManger.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Rain.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Sunflower.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Sunflower</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SunflowerManger.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Sunflower</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\VictoryScene.h">
-      <Filter>src</Filter>
+      <Filter>src\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\WallNut.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Wallnut</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\WallNutManger.h">
-      <Filter>src</Filter>
+      <Filter>src\Plants\Wallnut</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Zombie.h">
-      <Filter>src</Filter>
+      <Filter>src\Rabbits\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ZombieManger.h">
-      <Filter>src</Filter>
+      <Filter>src\Rabbits\Zombie</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

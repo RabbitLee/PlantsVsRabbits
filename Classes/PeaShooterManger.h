@@ -19,6 +19,18 @@ public:
 private:
 	Vector<Sprite*> myMapOfPea[HEIGHT + 1];
 	bool shootInRow[HEIGHT + 1];
+
+private:
+	static PeaShooterManger* myPeaShooterManager;
+
+public:
+	static PeaShooterManger* getInstance() {
+		if (myPeaShooterManager == nullptr) {
+			myPeaShooterManager = PeaShooterManger::create();
+		}
+		return myPeaShooterManager;
+	}
+
 };
 
 #endif

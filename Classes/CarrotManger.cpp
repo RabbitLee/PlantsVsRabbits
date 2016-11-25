@@ -1,4 +1,5 @@
 #include "CarrotManger.h"
+CarrotManger* CarrotManger::myCarrotManager = nullptr;
 
 bool CarrotManger::init(){
 	initial();

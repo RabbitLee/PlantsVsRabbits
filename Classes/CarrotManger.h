@@ -20,6 +20,16 @@ private:
 	Vector<Sprite*> myMapOfPea[HEIGHT + 1];
 	bool shootInRow[HEIGHT + 1];
 
+private:
+	static CarrotManger* myCarrotManager;
+
+public:
+	static CarrotManger* getInstance() {
+		if (myCarrotManager == nullptr) {
+			myCarrotManager = CarrotManger::create();
+		}
+		return myCarrotManager;
+	}
 };
 
 #endif

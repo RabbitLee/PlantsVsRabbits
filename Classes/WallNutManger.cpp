@@ -1,5 +1,7 @@
 #include "WallNutManger.h"
 
+WallNutManger* WallNutManger::myWallNutManager = nullptr;
+
 bool WallNutManger::init(){
 	initial();
 	//this->schedule(schedule_selector(WallNutManger::mutUpdate), INTERVAL_TIME);

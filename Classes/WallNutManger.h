@@ -12,6 +12,16 @@ public:
 	void mutUpdate(float dt);
 	virtual Vector<Sprite*>* getPeaInRow(int row) { return NULL; }
 
+private:
+	static WallNutManger* myWallNutManager;
+
+public:
+	static WallNutManger* getInstance() {
+		if (myWallNutManager == nullptr) {
+			myWallNutManager = WallNutManger::create();
+		}
+		return myWallNutManager;
+	}
 };
 
 #endif
