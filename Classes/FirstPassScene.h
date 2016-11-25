@@ -21,6 +21,7 @@ public :
 	virtual bool init();
 	CREATE_FUNC(FirstPass);
 	void mutUpdate(float dt);
+	void refreshPlantButtons();
 
 	void selectPlant(int number);
 
@@ -47,6 +48,11 @@ private:
 	Label* mySunshineLabel;
 	int mySunshine;
 
+	MenuItemImage* peaShooterProducer;
+	MenuItemImage* carrotProducer;
+	MenuItemImage* sunflowerProducer;
+	MenuItemImage* wallNutProducer;
+	MenuItemImage* blueEggProducer;
 };
 
 #endif
