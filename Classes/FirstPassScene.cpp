@@ -35,12 +35,12 @@ bool FirstPass::init(){
 		"Pause.png",
 		"Pause-.png",
 		[&](Ref* pSender){
-			auto renderTexture = RenderTexture::create(LENGTH_OF_SIDE*WIDTH, LENGTH_OF_SIDE*HEIGHT);
-			renderTexture->begin();
-			this->getParent()->visit();
-			renderTexture->end();
-			Director::getInstance()->pushScene(FirstPassPause::createScene(renderTexture));
-		}
+		auto renderTexture = RenderTexture::create(LENGTH_OF_SIDE*WIDTH, LENGTH_OF_SIDE*HEIGHT);
+		renderTexture->begin();
+		this->getParent()->visit();
+		renderTexture->end();
+		Director::getInstance()->pushScene(FirstPassPause::createScene(renderTexture));
+	}
 	);
 	auto menu = Menu::create(button, NULL);
 	menu->setPosition(Point(LENGTH_OF_SIDE*(WIDTH - 0.5f), LENGTH_OF_SIDE*(HEIGHT - 0.5f)));
@@ -65,15 +65,15 @@ bool FirstPass::init(){
 		}
 	}
 
-					/* Choosing */
+	/* Choosing */
 	auto peaShooterProducer = MenuItemImage::create(
 		"radishCard.png",
 		"darkRadishCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_PEASHOOTER && myRefrigerateTime[NUMBER_OF_PEASHOOTER] <= 0){
-				selectPlant(NUMBER_OF_PEASHOOTER);
-			}
+			selectPlant(NUMBER_OF_PEASHOOTER);
 		}
+	}
 	);
 	peaShooterProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_PEASHOOTER - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
@@ -83,9 +83,9 @@ bool FirstPass::init(){
 		"darkCarrotCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_CARROT && myRefrigerateTime[NUMBER_OF_CARROT] <= 0){
-				selectPlant(NUMBER_OF_CARROT);
-			}
+			selectPlant(NUMBER_OF_CARROT);
 		}
+	}
 	);
 	carrotProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_CARROT - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
@@ -95,9 +95,9 @@ bool FirstPass::init(){
 		"darkCloudCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_SUNFLOWER && myRefrigerateTime[NUMBER_OF_SUNFLOWER] <= 0){
-				selectPlant(NUMBER_OF_SUNFLOWER);
-			}
+			selectPlant(NUMBER_OF_SUNFLOWER);
 		}
+	}
 	);
 	sunflowerProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_SUNFLOWER - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
@@ -107,9 +107,9 @@ bool FirstPass::init(){
 		"DarkPinkEggCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_WALLNUT && myRefrigerateTime[NUMBER_OF_WALLNUT] <= 0){
-				selectPlant(NUMBER_OF_WALLNUT);
-			}
+			selectPlant(NUMBER_OF_WALLNUT);
 		}
+	}
 	);
 	wallNutProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_WALLNUT - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
@@ -150,7 +150,7 @@ bool FirstPass::init(){
 		this->addChild(myRefrigerateTimeLabel[i]);
 	}
 
-					/* Planting */
+	/* Planting */
 	auto plantProduceListener = EventListenerTouchOneByOne::create();
 	plantProduceListener->onTouchBegan = [&](Touch* touch, Event* event){
 		auto position = Director::getInstance()->convertToGL(touch->getLocationInView());
@@ -158,10 +158,10 @@ bool FirstPass::init(){
 		int columnNumber = position.y / LENGTH_OF_SIDE + 1;
 
 		if (rowNumber >= 2 && rowNumber <= WIDTH && columnNumber >= 1 && columnNumber < HEIGHT
-			&& myMapOfPlant[rowNumber][columnNumber] ==  NO_PLANT){
+			&& myMapOfPlant[rowNumber][columnNumber] == NO_PLANT){
 			if (myplantIsSeltcted[NUMBER_OF_PEASHOOTER]){
 				myPeaShooterManger->planting(rowNumber, columnNumber);
-				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;				
+				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
 				mySunshine -= PRICE_OF_PEASHOOTER;
 				myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;
 			}
@@ -195,28 +195,28 @@ bool FirstPass::init(){
 						int columnOfZombie = (int)(zombie->getPositionY() / LENGTH_OF_SIDE) + 1;
 
 						if (rowOfZombie >= rowNumber - 1 && rowOfZombie <= rowNumber + 1 && columnOfZombie >= columnNumber - 1 && columnOfZombie <= columnNumber + 1){
-							zombie->getHurt(ATTACK_OF_BLUEEGG); 
+							zombie->getHurt(ATTACK_OF_BLUEEGG);
 							/*if (zombie->getHealthPoint() <= 0){
 								myNumberOfDeadEnemy++;
-							}*/
+								}*/
 						}
 					}
 					for (auto zombie : *(myEvilRabbitManger->getMapOfEnemy())){
 						auto rowOfZombie = (int)(zombie->getPositionX() / LENGTH_OF_SIDE) + 1;
 						auto columnOfZombie = (int)(zombie->getPositionY() / LENGTH_OF_SIDE) + 1;
-						
+
 						if (rowOfZombie >= rowNumber - 1 && rowOfZombie <= rowNumber + 1 && columnOfZombie >= columnNumber - 1 && columnOfZombie <= columnNumber + 1){
 							zombie->getHurt(ATTACK_OF_BLUEEGG);
 							/*if (zombie->getHealthPoint() <= 0){
 								myNumberOfDeadEnemy++;
-							}*/
+								}*/
 						}
 					}
 					myBlueEggManger->getHurt(rowNumber, columnNumber, HEALTH_POINT_OF_BLUEEGG);
 					myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
 				});
 
-				auto actions = Sequence::create(DelayTime::create(0.7f), bomb,  NULL);
+				auto actions = Sequence::create(DelayTime::create(0.7f), bomb, NULL);
 				this->runAction(actions);
 
 			}
@@ -224,7 +224,7 @@ bool FirstPass::init(){
 			}
 			selectPlant(NO_PLANT);
 			return true;
-		}	
+		}
 		else{
 			return false;
 		}
@@ -233,8 +233,10 @@ bool FirstPass::init(){
 
 	/* Zombies */
 	myZombieManger = ZombieManger::create();
+	//myZombieManger = ZombieManger::getInstance();
 	this->addChild(myZombieManger, PRIORITY_OF_RABBIT);
-	myEvilRabbitManger = EvilRabbitManger::create();
+	//myEvilRabbitManger = EvilRabbitManger::create();
+	myEvilRabbitManger = EvilRabbitManger::getInstance();
 	this->addChild(myEvilRabbitManger, PRIORITY_OF_RABBIT);
 
 
@@ -262,19 +264,19 @@ void FirstPass::mutUpdate(float dt){
 	if (myZombieManger->getNumberOfDeadEnemy() + myEvilRabbitManger->getNumberOfDeadEnemy() >= myNumberOfWholeZombie){
 		Director::getInstance()->replaceScene(Victory::createScene());
 	}
-	 
- 
+
+
 	auto winEnemy = myZombieManger->getWinEnemy();
 	if (winEnemy == NULL){
 		winEnemy = myEvilRabbitManger->getWinEnemy();
-	}	
+	}
 	if (winEnemy != NULL){
 		int row = (int)(winEnemy->getPositionY() / LENGTH_OF_SIDE) + 1;
 		winEnemy->removeFromParent();
 		this->unschedule(schedule_selector(FirstPass::mutUpdate));
 		Director::getInstance()->replaceScene(TransitionSlideInL::create(3.0f, Failure::createScene(row)));
 	}
-	
+
 
 
 
@@ -305,7 +307,7 @@ void FirstPass::mutUpdate(float dt){
 						zombie->getHurt(ATTACK_OF_PEA);
 						/*if (zombie->getHealthPoint() <= 0){
 							myNumberOfDeadEnemy++;
-						}*/
+							}*/
 						(*pea)->removeFromParent();
 						pea = peaInRow->erase(pea);
 					}
@@ -320,7 +322,7 @@ void FirstPass::mutUpdate(float dt){
 		attackZombie(myPeaShooterManger);
 		attackZombie(myCarrotManger);
 	};
-	
+
 	plantAttackRabbit(myZombieManger);
 	plantAttackRabbit(myEvilRabbitManger);
 
@@ -359,7 +361,7 @@ void FirstPass::mutUpdate(float dt){
 				break;
 			}
 		}
-	};	
+	};
 	rabbitAttackPlant(myZombieManger, SPEED_OF_ZOMBIE);
 	rabbitAttackPlant(myEvilRabbitManger, SPEED_OF_EVILRABBIT);
 }

@@ -14,6 +14,17 @@ public:
 
 	static Wave waveOfEvilRabbit[NUMBER_OF_EVILRABBIT_WAVE + 1];
 
+private:
+	static EvilRabbitManger* myEvilRabbitManager; 
+
+public:
+	static EvilRabbitManger* getInstance() {
+		if (myEvilRabbitManager == nullptr) {
+			myEvilRabbitManager = EvilRabbitManger::create();
+		}
+		return myEvilRabbitManager;
+	}
+
 };
 
 #endif

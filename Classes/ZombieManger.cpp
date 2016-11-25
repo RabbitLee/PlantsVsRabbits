@@ -1,6 +1,7 @@
 #include "ZombieManger.h"
 
 EnemyManger::Wave ZombieManger::waveOfZombie[NUMBER_OF_ZOMBIE_WAVE + 1] = CONTENT_OF_ZOMBIE_WAVE;
+ZombieManger* ZombieManger::myZombieManager = nullptr;
 
 
 bool ZombieManger::init(){

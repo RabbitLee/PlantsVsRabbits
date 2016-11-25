@@ -14,6 +14,18 @@ public:
 
 	static Wave waveOfZombie[NUMBER_OF_ZOMBIE_WAVE + 1];
 
+private:
+	static ZombieManger* myZombieManager;
+
+public:
+	static ZombieManger* getInstance() {
+		if (myZombieManager == nullptr) {
+			myZombieManager == ZombieManger::create();
+		}
+		return myZombieManager;
+	}
+
 };
+
 
 #endif

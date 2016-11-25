@@ -1,7 +1,7 @@
 #include "EvilRabbitManger.h"
 
 EnemyManger::Wave EvilRabbitManger::waveOfEvilRabbit[NUMBER_OF_EVILRABBIT_WAVE + 1] = CONTENT_OF_EVILRABBIT_WAVE;
-
+EvilRabbitManger* EvilRabbitManger::myEvilRabbitManager = nullptr;
 
 bool EvilRabbitManger::init(){
 	EnemyManger::initial();
