@@ -47,6 +47,7 @@ private:
 
 	Label* mySunshineLabel;
 	int mySunshine;
+	int myLastUpdateSunshine;
 
 	MenuItemImage* peaShooterProducer;
 	MenuItemImage* carrotProducer;
