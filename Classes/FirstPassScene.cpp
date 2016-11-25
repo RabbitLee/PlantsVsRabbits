@@ -232,8 +232,8 @@ bool FirstPass::init(){
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(plantProduceListener, this);
 
 	/* Zombies */
-	myZombieManger = ZombieManger::create();
-	//myZombieManger = ZombieManger::getInstance();
+	//myZombieManger = ZombieManger::create();
+	myZombieManger = ZombieManger::getInstance();
 	this->addChild(myZombieManger, PRIORITY_OF_RABBIT);
 	//myEvilRabbitManger = EvilRabbitManger::create();
 	myEvilRabbitManger = EvilRabbitManger::getInstance();

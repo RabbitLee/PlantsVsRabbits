@@ -20,7 +20,7 @@ private:
 public:
 	static ZombieManger* getInstance() {
 		if (myZombieManager == nullptr) {
-			myZombieManager == ZombieManger::create();
+			myZombieManager = ZombieManger::create();
 		}
 		return myZombieManager;
 	}
