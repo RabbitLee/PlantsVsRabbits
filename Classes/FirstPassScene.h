@@ -24,6 +24,7 @@ public :
 	void refreshPlantButtons();
 
 	void selectPlant(int number);
+	bool producePlants(int rowNumber, int columnNumber, int plantNumber);
 
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];

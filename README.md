@@ -11,3 +11,6 @@ This is a software design pattern class project, and its main content is a game 
 ![](resource_of_readme_file/observer_pattern_new.png)  
 考虑到只有在雨滴数目发生变化时，植物按钮的状态才会发生改变，因此我们选择在每一帧进行判断，将这一帧的雨滴数目与上一帧进行比较，仅在数目发生变化时才对按钮状态（可点击/不可点击）进行判断刷新
 。
+
+## 命令模式
+种植植物时，原来的做法是将鼠标点击事件的监听、解析与种植动作在一起实现，耦合性过高，不利于实现 Redo/Undo 机制；将其改为监听者承担监听与解析任务，之后由监听者调用种植函数，实现命令模式。
