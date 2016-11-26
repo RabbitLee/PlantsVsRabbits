@@ -22,6 +22,7 @@ bool FirstPass::init(){
 	this->addChild(mapTmx);
 
 	mySunshine = INITIAL_SUNSHINE;
+	myLastUpdateSunshine = INITIAL_SUNSHINE;
 	mySunshineLabel = Label::create(Value(mySunshine).asString(), "Broadway", 30);
 	mySunshineLabel->setColor(Color3B::ORANGE);
 	mySunshineLabel->setPosition(Point(0.5f*LENGTH_OF_SIDE, (HEIGHT - 0.75f)*LENGTH_OF_SIDE));
@@ -66,8 +67,9 @@ bool FirstPass::init(){
 	}
 
 	/* Choosing */
-	auto peaShooterProducer = MenuItemImage::create(
+	peaShooterProducer = MenuItemImage::create(
 		"radishCard.png",
+		"darkRadishCard.png",
 		"darkRadishCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_PEASHOOTER && myRefrigerateTime[NUMBER_OF_PEASHOOTER] <= 0){
@@ -78,8 +80,9 @@ bool FirstPass::init(){
 	peaShooterProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_PEASHOOTER - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
 
-	auto carrotProducer = MenuItemImage::create(
+	carrotProducer = MenuItemImage::create(
 		"carrotCard.png",
+		"darkCarrotCard.png",
 		"darkCarrotCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_CARROT && myRefrigerateTime[NUMBER_OF_CARROT] <= 0){
@@ -90,8 +93,9 @@ bool FirstPass::init(){
 	carrotProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_CARROT - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
 
-	auto sunflowerProducer = MenuItemImage::create(
+	sunflowerProducer = MenuItemImage::create(
 		"cloudCard.png",
+		"darkCloudCard.png",
 		"darkCloudCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_SUNFLOWER && myRefrigerateTime[NUMBER_OF_SUNFLOWER] <= 0){
@@ -102,8 +106,9 @@ bool FirstPass::init(){
 	sunflowerProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_SUNFLOWER - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
 
-	auto wallNutProducer = MenuItemImage::create(
+	wallNutProducer = MenuItemImage::create(
 		"pinkEggCard.png",
+		"DarkPinkEggCard.png",
 		"DarkPinkEggCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_WALLNUT && myRefrigerateTime[NUMBER_OF_WALLNUT] <= 0){
@@ -114,8 +119,9 @@ bool FirstPass::init(){
 	wallNutProducer->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_WALLNUT - 0.5f),
 		LENGTH_OF_SIDE*0.5f));
 
-	auto blueEggProducer = MenuItemImage::create(
+	blueEggProducer = MenuItemImage::create(
 		"BlueeggCard.png",
+		"DarkBlueeggCard.png",
 		"DarkBlueeggCard.png",
 		[&](Ref* pSender){
 		if (mySunshine >= PRICE_OF_BLUEEGG && myRefrigerateTime[NUMBER_OF_BLUEEGG] <= 0){
@@ -261,10 +267,10 @@ bool FirstPass::init(){
 }
 
 void FirstPass::mutUpdate(float dt){
+	/* judge win or fail */
 	if (myZombieManger->getNumberOfDeadEnemy() + myEvilRabbitManger->getNumberOfDeadEnemy() >= myNumberOfWholeZombie){
 		Director::getInstance()->replaceScene(Victory::createScene());
 	}
-
 
 	auto winEnemy = myZombieManger->getWinEnemy();
 	if (winEnemy == NULL){
@@ -278,10 +284,13 @@ void FirstPass::mutUpdate(float dt){
 	}
 
 
-
-
+	/* refresh sunshine and plant buttons */
 	mySunshine += mySunflowerManger->getNumberOfClickedSunshine()*WORTH_OH_SUNSHINE;
-	mySunshineLabel->setString(Value(mySunshine).asString());
+	if (mySunshine != myLastUpdateSunshine) {
+		refreshPlantButtons();
+		mySunshineLabel->setString(Value(mySunshine).asString());
+	}
+	myLastUpdateSunshine = mySunshine;
 
 	for (int i = 1; i <= NUMBER_OF_PLANT; i++){
 		if (myRefrigerateTime[i] > 0){
@@ -364,6 +373,49 @@ void FirstPass::mutUpdate(float dt){
 	};
 	rabbitAttackPlant(myZombieManger, SPEED_OF_ZOMBIE);
 	rabbitAttackPlant(myEvilRabbitManger, SPEED_OF_EVILRABBIT);
+}
+
+void FirstPass::refreshPlantButtons() {
+	//peaShooterProducer
+	if (!peaShooterProducer->isEnabled() && mySunshine >= PRICE_OF_PEASHOOTER) {
+		peaShooterProducer->setEnabled(true);
+	}
+	if (peaShooterProducer->isEnabled() && mySunshine < PRICE_OF_PEASHOOTER) {
+		peaShooterProducer->setEnabled(false);
+	}
+
+	//carrotProductor
+	if (!carrotProducer->isEnabled() && mySunshine >= PRICE_OF_CARROT) {
+		carrotProducer->setEnabled(true);
+	}
+	if (carrotProducer->isEnabled() && mySunshine < PRICE_OF_CARROT) {
+		carrotProducer->setEnabled(false);
+	}
+
+	//sunflowerProducer
+	if (!sunflowerProducer->isEnabled() && mySunshine >= PRICE_OF_SUNFLOWER) {
+		sunflowerProducer->setEnabled(true);
+	}
+	if (sunflowerProducer->isEnabled() && mySunshine < PRICE_OF_SUNFLOWER) {
+		sunflowerProducer->setEnabled(false);
+	}
+
+	//wallNutProducer
+	if (!wallNutProducer->isEnabled() && mySunshine >= PRICE_OF_WALLNUT) {
+		wallNutProducer->setEnabled(true);
+	}
+	if (wallNutProducer->isEnabled() && mySunshine < PRICE_OF_WALLNUT) {
+		wallNutProducer->setEnabled(false);
+	}
+
+	//blueEggProducer
+	if (!blueEggProducer->isEnabled() && mySunshine >= PRICE_OF_BLUEEGG) {
+		blueEggProducer->setEnabled(true);
+	}
+	if (blueEggProducer->isEnabled() && mySunshine < PRICE_OF_BLUEEGG) {
+		blueEggProducer->setEnabled(false);
+	}
+
 }
 
 void FirstPass::selectPlant(int number){
