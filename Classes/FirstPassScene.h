@@ -28,7 +28,8 @@ public :
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
 
-	bool myplantIsSeltcted[NUMBER_OF_PLANT + 1];
+	//bool myplantIsSeltcted[NUMBER_OF_PLANT + 1];
+	int selectedPlantNumber;
 	PeaShooterManger* myPeaShooterManger;
 	CarrotManger* myCarrotManger;
 	SunflowerManger* mySunflowerManger;

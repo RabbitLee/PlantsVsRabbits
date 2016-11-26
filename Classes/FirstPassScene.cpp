@@ -164,32 +164,34 @@ bool FirstPass::init(){
 		int columnNumber = position.y / LENGTH_OF_SIDE + 1;
 
 		if (rowNumber >= 2 && rowNumber <= WIDTH && columnNumber >= 1 && columnNumber < HEIGHT
-			&& myMapOfPlant[rowNumber][columnNumber] == NO_PLANT){
-			if (myplantIsSeltcted[NUMBER_OF_PEASHOOTER]){
+			&& myMapOfPlant[rowNumber][columnNumber] == NO_PLANT) {
+			switch (selectedPlantNumber)
+			{
+			case NUMBER_OF_PEASHOOTER:
 				myPeaShooterManger->planting(rowNumber, columnNumber);
 				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
 				mySunshine -= PRICE_OF_PEASHOOTER;
 				myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;
-			}
-			else if (myplantIsSeltcted[NUMBER_OF_CARROT]){
+				break;
+			case NUMBER_OF_CARROT:
 				myCarrotManger->planting(rowNumber, columnNumber);
 				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_CARROT;
 				mySunshine -= PRICE_OF_CARROT;
 				myRefrigerateTime[NUMBER_OF_CARROT] = REFRIGERATE_TIME_OF_CARROT;
-			}
-			else if (myplantIsSeltcted[NUMBER_OF_SUNFLOWER]){
+				break;
+			case NUMBER_OF_SUNFLOWER:
 				mySunflowerManger->planting(rowNumber, columnNumber);
 				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_SUNFLOWER;
 				mySunshine -= PRICE_OF_SUNFLOWER;
 				myRefrigerateTime[NUMBER_OF_SUNFLOWER] = REFRIGERATE_TIME_OF_SUNFLOWER;
-			}
-			else if (myplantIsSeltcted[NUMBER_OF_WALLNUT]){
+				break;
+			case NUMBER_OF_WALLNUT:
 				myWallNutManger->planting(rowNumber, columnNumber);
 				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_WALLNUT;
 				mySunshine -= PRICE_OF_WALLNUT;
 				myRefrigerateTime[NUMBER_OF_WALLNUT] = REFRIGERATE_TIME_OF_WALLNUT;
-			}
-			else if (myplantIsSeltcted[NUMBER_OF_BLUEEGG]){
+				break;
+			case NUMBER_OF_BLUEEGG:
 				myBlueEggManger->planting(rowNumber, columnNumber);
 				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_BLUEEGG;
 				mySunshine -= PRICE_OF_BLUEEGG;
@@ -224,10 +226,11 @@ bool FirstPass::init(){
 
 				auto actions = Sequence::create(DelayTime::create(0.7f), bomb, NULL);
 				this->runAction(actions);
-
+				break;/*
+			default:
+				break;*/
 			}
-			else{
-			}
+		
 			selectPlant(NO_PLANT);
 			return true;
 		}
@@ -419,8 +422,9 @@ void FirstPass::refreshPlantButtons() {
 }
 
 void FirstPass::selectPlant(int number){
-	for (int i = 1; i <= NUMBER_OF_PLANT; i++){
-		myplantIsSeltcted[i] = false;
-	}
-	myplantIsSeltcted[number] = true;
+	selectedPlantNumber = number;
+	//for (int i = 1; i <= NUMBER_OF_PLANT; i++){
+	//	myplantIsSeltcted[i] = false;
+	//}
+	//myplantIsSeltcted[number] = true;
 }
