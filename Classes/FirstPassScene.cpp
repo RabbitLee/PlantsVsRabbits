@@ -288,8 +288,8 @@ void FirstPass::mutUpdate(float dt){
 	mySunshine += mySunflowerManger->getNumberOfClickedSunshine()*WORTH_OH_SUNSHINE;
 	if (mySunshine != myLastUpdateSunshine) {
 		refreshPlantButtons();
+		mySunshineLabel->setString(Value(mySunshine).asString());
 	}
-	mySunshineLabel->setString(Value(mySunshine).asString());
 	myLastUpdateSunshine = mySunshine;
 
 	for (int i = 1; i <= NUMBER_OF_PLANT; i++){
