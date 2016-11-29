@@ -32,7 +32,15 @@ bool FirstPass::init(){
 	rainPicture->setPosition(Point(0.5f*LENGTH_OF_SIDE, (HEIGHT - 0.25f)*LENGTH_OF_SIDE));
 	this->addChild(rainPicture);
 
-	auto button = MenuItemImage::create(
+	auto undoButton = MenuItemImage::create(
+		"Pause.png",
+		"Pause.png",
+		[&](Ref* pSender){
+						
+	}
+	);
+	undoButton->setPosition(Point(LENGTH_OF_SIDE*(-1.0f), 0));
+	auto pauseButton = MenuItemImage::create(
 		"Pause.png",
 		"Pause-.png",
 		[&](Ref* pSender){
@@ -43,7 +51,8 @@ bool FirstPass::init(){
 		Director::getInstance()->pushScene(FirstPassPause::createScene(renderTexture));
 	}
 	);
-	auto menu = Menu::create(button, NULL);
+	
+	auto menu = Menu::create(undoButton, pauseButton, NULL);
 	menu->setPosition(Point(LENGTH_OF_SIDE*(WIDTH - 0.5f), LENGTH_OF_SIDE*(HEIGHT - 0.5f)));
 	this->addChild(menu);
 
@@ -359,7 +368,7 @@ void FirstPass::selectPlant(int number){
 bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) {
 	if (rowNumber >= 2 && rowNumber <= WIDTH && columnNumber >= 1 && columnNumber < HEIGHT
 		&& myMapOfPlant[rowNumber][columnNumber] == NO_PLANT) {
-		switch (selectedPlantNumber)
+		switch (plantNumber)
 		{
 		case NUMBER_OF_PEASHOOTER:
 			myPeaShooterManger->planting(rowNumber, columnNumber);

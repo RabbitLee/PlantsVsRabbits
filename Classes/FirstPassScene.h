@@ -13,10 +13,12 @@
 #include "ZombieManger.h"
 #include "EvilRabbitManger.h"
 
+#include <stack>
+
 using namespace cocos2d;
 
 class FirstPass: public Layer{
-public :
+public:
 	static Scene* createScene();
 	virtual bool init();
 	CREATE_FUNC(FirstPass);
@@ -25,6 +27,17 @@ public :
 
 	void selectPlant(int number);
 	bool producePlants(int rowNumber, int columnNumber, int plantNumber);
+	void undoProducePlants(int rowNumber, int colummNumber);
+
+public:
+	struct Command {
+		int rowNumber, columnNumber;
+		int plantNumber;
+	};
+
+private:
+	std::stack<Command> CommandStack;
+
 
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
