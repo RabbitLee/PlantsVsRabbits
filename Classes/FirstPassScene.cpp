@@ -162,7 +162,82 @@ bool FirstPass::init(){
 		auto position = Director::getInstance()->convertToGL(touch->getLocationInView());
 		int rowNumber = position.x / LENGTH_OF_SIDE + 1;
 		int columnNumber = position.y / LENGTH_OF_SIDE + 1;
+		
 		return producePlants(rowNumber, columnNumber, selectedPlantNumber);
+
+//		if (rowNumber >= 2 && rowNumber <= WIDTH && columnNumber >= 1 && columnNumber < HEIGHT
+//			&& myMapOfPlant[rowNumber][columnNumber] == NO_PLANT){
+//			if (myplantIsSeltcted[NUMBER_OF_PEASHOOTER]){
+//				myPeaShooterManger->planting(rowNumber, columnNumber);
+//				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
+//				mySunshine -= PRICE_OF_PEASHOOTER;
+//				myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;
+//				//myPlantmanger = myPeaShooterManager;
+//			}
+//			else if (myplantIsSeltcted[NUMBER_OF_CARROT]){
+//				myCarrotManger->planting(rowNumber, columnNumber);
+//				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_CARROT;
+//				mySunshine -= PRICE_OF_CARROT;
+//				myRefrigerateTime[NUMBER_OF_CARROT] = REFRIGERATE_TIME_OF_CARROT;
+//			}
+//			else if (myplantIsSeltcted[NUMBER_OF_SUNFLOWER]){
+//				mySunflowerManger->planting(rowNumber, columnNumber);
+//				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_SUNFLOWER;
+//				mySunshine -= PRICE_OF_SUNFLOWER;
+//				myRefrigerateTime[NUMBER_OF_SUNFLOWER] = REFRIGERATE_TIME_OF_SUNFLOWER;
+//			}
+//			else if (myplantIsSeltcted[NUMBER_OF_WALLNUT]){
+//				myWallNutManger->planting(rowNumber, columnNumber);
+//				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_WALLNUT;
+//				mySunshine -= PRICE_OF_WALLNUT;
+//				myRefrigerateTime[NUMBER_OF_WALLNUT] = REFRIGERATE_TIME_OF_WALLNUT;
+//			}
+//			else if (myplantIsSeltcted[NUMBER_OF_BLUEEGG]){
+//				myBlueEggManger->planting(rowNumber, columnNumber);
+//				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_BLUEEGG;
+//				mySunshine -= PRICE_OF_BLUEEGG;
+//				myRefrigerateTime[NUMBER_OF_BLUEEGG] = REFRIGERATE_TIME_OF_BLUEEGG;
+//
+//				auto bomb = CallFuncN::create([=](Node*){
+//					for (auto zombie : *(myZombieManger->getMapOfEnemy())){
+//						int rowOfZombie = (int)(zombie->getPositionX() / LENGTH_OF_SIDE) + 1;
+//						int columnOfZombie = (int)(zombie->getPositionY() / LENGTH_OF_SIDE) + 1;
+//
+//						if (rowOfZombie >= rowNumber - 1 && rowOfZombie <= rowNumber + 1 && columnOfZombie >= columnNumber - 1 && columnOfZombie <= columnNumber + 1){
+//							zombie->getHurt(ATTACK_OF_BLUEEGG);
+//							/*if (zombie->getHealthPoint() <= 0){
+//								myNumberOfDeadEnemy++;
+//								}*/
+//						}
+//					}
+//					for (auto zombie : *(myEvilRabbitManger->getMapOfEnemy())){
+//						auto rowOfZombie = (int)(zombie->getPositionX() / LENGTH_OF_SIDE) + 1;
+//						auto columnOfZombie = (int)(zombie->getPositionY() / LENGTH_OF_SIDE) + 1;
+//
+//						if (rowOfZombie >= rowNumber - 1 && rowOfZombie <= rowNumber + 1 && columnOfZombie >= columnNumber - 1 && columnOfZombie <= columnNumber + 1){
+//							zombie->getHurt(ATTACK_OF_BLUEEGG);
+//							/*if (zombie->getHealthPoint() <= 0){
+//								myNumberOfDeadEnemy++;
+//								}*/
+//						}
+//					}
+//					myBlueEggManger->getHurt(rowNumber, columnNumber, HEALTH_POINT_OF_BLUEEGG);
+//					myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+//				});
+//
+//				auto actions = Sequence::create(DelayTime::create(0.7f), bomb, NULL);
+//				this->runAction(actions);
+//
+//			}
+//			else{
+//			}
+//			selectPlant(NO_PLANT);
+//			return true;
+//		}
+//		else{
+//			return false;
+//		}
+//>>>>>>> StragetyPattern
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(plantProduceListener, this);
 
@@ -302,6 +377,20 @@ void FirstPass::mutUpdate(float dt){
 	};
 	rabbitAttackPlant(myZombieManger, SPEED_OF_ZOMBIE);
 	rabbitAttackPlant(myEvilRabbitManger, SPEED_OF_EVILRABBIT);
+
+	/*setRabbitAttackStrategy(myZombieManger);
+	rabbitAttackPlant(myMapOfPlant);
+	setRabbitAttackStrategy(myEvilRabbitManger);
+	rabbitAttackPlant(myMapOfPlant);*/
+}
+/*strategy*/
+void FirstPass::setRabbitAttackStrategy(EnemyManger* myenemymanger)
+{
+	this->EnemyMangerType = myenemymanger;
+}
+void FirstPass::rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
+{
+	EnemyMangerType->AttackPlant(myMapOfPlant);
 }
 
 void FirstPass::refreshPlantButtons() {

@@ -9,6 +9,7 @@ class EvilRabbitManger :public EnemyManger{
 public:
 	CREATE_FUNC(EvilRabbitManger);
 	virtual bool init();
+	virtual void AttackPlant();
 
 	void mutUpdate(float dt);
 

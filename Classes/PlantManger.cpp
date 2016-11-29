@@ -46,3 +46,4 @@ void PlantManger::planting(Entity* plant, int row, int column){
 	myMapOfPlant[row][column] = plant;
 	this->addChild(plant);
 }
+

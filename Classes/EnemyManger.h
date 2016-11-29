@@ -19,6 +19,7 @@ public:
 
 	Entity* getWinEnemy();
 
+	virtual void AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 protected:
 	Vector<Entity*> myMapOfEnemy;
 	int speed;

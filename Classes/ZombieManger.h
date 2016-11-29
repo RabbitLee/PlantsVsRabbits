@@ -3,12 +3,17 @@
 
 #include "Zombie.h"
 #include "EnemyManger.h"
+#include "PlantManger.h"
 #include "GameSettings.h"
+
 
 class ZombieManger :public EnemyManger{
 public:
 	CREATE_FUNC(ZombieManger);
 	virtual bool init();
+	virtual void AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
+	void SelectPlantStrategy(int numberOfPlant);
+	void ExecutePlantStrategy(int rowNumber,int columnNumber, int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 
 	void mutUpdate(float dt);
 
@@ -16,7 +21,7 @@ public:
 
 private:
 	static ZombieManger* myZombieManager;
-
+	PlantManger* myPlantManger;
 public:
 	static ZombieManger* getInstance() {
 		if (myZombieManager == nullptr) {
