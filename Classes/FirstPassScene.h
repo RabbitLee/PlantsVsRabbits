@@ -12,6 +12,7 @@
 
 #include "ZombieManger.h"
 #include "EvilRabbitManger.h"
+#include "EnemyManger.h"
 
 using namespace cocos2d;
 
@@ -22,9 +23,10 @@ public :
 	CREATE_FUNC(FirstPass);
 	void mutUpdate(float dt);
 	void refreshPlantButtons();
-
 	void selectPlant(int number);
 
+    void setRabbitAttackStrategy(EnemyManger* myenemymanger);
+	void rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
 
@@ -44,6 +46,7 @@ private:
 
 	ZombieManger* myZombieManger;
 	EvilRabbitManger* myEvilRabbitManger;
+	EnemyManger *EnemyMangerType;
 
 	Label* mySunshineLabel;
 	int mySunshine;

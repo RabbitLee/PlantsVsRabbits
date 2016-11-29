@@ -170,6 +170,7 @@ bool FirstPass::init(){
 				myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
 				mySunshine -= PRICE_OF_PEASHOOTER;
 				myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;
+				//myPlantmanger = myPeaShooterManager;
 			}
 			else if (myplantIsSeltcted[NUMBER_OF_CARROT]){
 				myCarrotManger->planting(rowNumber, columnNumber);
@@ -373,6 +374,20 @@ void FirstPass::mutUpdate(float dt){
 	};
 	rabbitAttackPlant(myZombieManger, SPEED_OF_ZOMBIE);
 	rabbitAttackPlant(myEvilRabbitManger, SPEED_OF_EVILRABBIT);
+
+	/*setRabbitAttackStrategy(myZombieManger);
+	rabbitAttackPlant(myMapOfPlant);
+	setRabbitAttackStrategy(myEvilRabbitManger);
+	rabbitAttackPlant(myMapOfPlant);*/
+}
+/*strategy*/
+void FirstPass::setRabbitAttackStrategy(EnemyManger* myenemymanger)
+{
+	this->EnemyMangerType = myenemymanger;
+}
+void FirstPass::rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
+{
+	EnemyMangerType->AttackPlant(myMapOfPlant);
 }
 
 void FirstPass::refreshPlantButtons() {
