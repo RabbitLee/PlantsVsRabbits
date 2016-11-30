@@ -14,8 +14,11 @@ Vector<Sprite*>* CarrotManger::getPeaInRow(int row){
 	return myMapOfPea + row;
 }
 
-void CarrotManger::planting(int row, int column){
-	PlantManger::planting(Carrot::create(), row, column);
+void CarrotManger::planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime){
+	PlantManger::ParentPlanting(Carrot::create(), row, column);
+	myMapOfPlant[row][column] = NUMBER_OF_CARROT;
+	mySunshine -= PRICE_OF_CARROT;
+	myRefrigerateTime[NUMBER_OF_CARROT] = REFRIGERATE_TIME_OF_CARROT;
 }
 
 void CarrotManger::mutUpdate(float dt){

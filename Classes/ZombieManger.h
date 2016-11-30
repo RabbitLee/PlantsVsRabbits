@@ -11,9 +11,9 @@ class ZombieManger :public EnemyManger{
 public:
 	CREATE_FUNC(ZombieManger);
 	virtual bool init();
-	virtual void AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
-	void SelectPlantStrategy(int numberOfPlant);
-	void ExecutePlantStrategy(int rowNumber,int columnNumber, int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
+	//virtual void AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
+	//void SelectPlantStrategy(int numberOfPlant);
+	//void ExecutePlantStrategy(int rowNumber,int columnNumber, int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 
 	void mutUpdate(float dt);
 

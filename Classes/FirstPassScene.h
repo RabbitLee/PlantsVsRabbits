@@ -9,6 +9,7 @@
 #include "SunflowerManger.h"
 #include "WallNutManger.h"
 #include "BlueEggManger.h"
+#include "PlantManger.h"
 
 #include "ZombieManger.h"
 #include "EvilRabbitManger.h"
@@ -26,6 +27,8 @@ public :
 	void selectPlant(int number);
 	bool producePlants(int rowNumber, int columnNumber, int plantNumber);
 
+	void PlantStrategy(PlantManger* selectPlantManager);
+	void ExecutePlantStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
     void setRabbitAttackStrategy(EnemyManger* myenemymanger);
 	void rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 private:
@@ -38,6 +41,8 @@ private:
 	SunflowerManger* mySunflowerManger;
 	WallNutManger* myWallNutManger;
 	BlueEggManger* myBlueEggManger;
+	/*choose a plantManager*/
+	PlantManger *selectPlantManager;
 
 	Label* myRefrigerateTimeLabel[NUMBER_OF_PLANT + 1];
 	int myRefrigerateTime[NUMBER_OF_PLANT + 1];

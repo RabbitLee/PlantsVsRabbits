@@ -9,7 +9,7 @@ class SunflowerManger :public PlantManger{
 public:
 	CREATE_FUNC(SunflowerManger);
 	virtual bool init();
-	void planting(int row, int column);
+	void planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
 	void mutUpdate(float dt);
 
 	int getNumberOfClickedSunshine();

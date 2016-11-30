@@ -10,8 +10,11 @@ bool SunflowerManger::init(){
 	return true;
 }
 
-void SunflowerManger::planting(int row, int column){
-	PlantManger::planting(Sunflower::create(), row, column);
+void SunflowerManger::planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime){
+	PlantManger::ParentPlanting(Sunflower::create(), row, column);
+	myMapOfPlant[row][column] = NUMBER_OF_SUNFLOWER;
+	mySunshine -= PRICE_OF_SUNFLOWER;
+	myRefrigerateTime[NUMBER_OF_SUNFLOWER] = REFRIGERATE_TIME_OF_SUNFLOWER;
 }
 
 void SunflowerManger::mutUpdate(float dt){

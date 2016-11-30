@@ -36,7 +36,7 @@ void PlantManger::updateOfDeath(float dt){
 	}
 }
 
-void PlantManger::planting(Entity* plant, int row, int column){
+void PlantManger::ParentPlanting(Entity* plant, int row, int column){
 	Point position;
 	position.x = (row - 0.5f)*LENGTH_OF_SIDE;
 	position.y = (column - 0.5f)*LENGTH_OF_SIDE;
@@ -47,3 +47,6 @@ void PlantManger::planting(Entity* plant, int row, int column){
 	this->addChild(plant);
 }
 
+void PlantManger::planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime)
+{
+}

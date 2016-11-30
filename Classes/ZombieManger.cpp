@@ -46,47 +46,47 @@ void ZombieManger::mutUpdate(float dt){
 }
 
 /*strategy*/
-void ZombieManger::AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
-{
-	for (auto zombie : *(getMapOfEnemy())){
-			int rowNumber = (zombie->getPositionX() / LENGTH_OF_SIDE) + 1;
-			int columnNumber = (zombie->getPositionY() / LENGTH_OF_SIDE) + 1;
-			zombie->setPositionX(zombie->getPositionX() + SPEED_OF_ZOMBIE);
-			SelectPlantStrategy(myMapOfPlant[rowNumber][columnNumber]);
-			ExecutePlantStrategy(rowNumber,columnNumber, myMapOfPlant);
-	}
-			
-}
+//void ZombieManger::AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
+//{
+//	for (auto zombie : *(getMapOfEnemy())){
+//			int rowNumber = (zombie->getPositionX() / LENGTH_OF_SIDE) + 1;
+//			int columnNumber = (zombie->getPositionY() / LENGTH_OF_SIDE) + 1;
+//			zombie->setPositionX(zombie->getPositionX() + SPEED_OF_ZOMBIE);
+//			SelectPlantStrategy(myMapOfPlant[rowNumber][columnNumber]);
+//			ExecutePlantStrategy(rowNumber,columnNumber, myMapOfPlant);
+//	}
+//			
+//}
 
-void ZombieManger::ExecutePlantStrategy(int rowNumber,int columnNumber, int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
-{
-	myPlantManger->getHurt(rowNumber, columnNumber, ATTACK_OF_ZOMBIE);
-	if (myPlantManger->getHealthPoint(rowNumber, columnNumber) <= 0)
-	{
-			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-	}
-}
-
-void ZombieManger::SelectPlantStrategy(int numberOfPlant)
-{
-	switch (numberOfPlant){
-			case NUMBER_OF_PEASHOOTER:
-				attackPlant(myPeaShooterManger);
-				break;
-			case NUMBER_OF_CARROT:
-				attackPlant(myCarrotManger);
-				break;
-			case NUMBER_OF_SUNFLOWER:
-				attackPlant(mySunflowerManger);
-				break;
-			case NUMBER_OF_WALLNUT:
-				attackPlant(myWallNutManger);
-				break;
-			case NUMBER_OF_BLUEEGG:
-				attackPlant(myBlueEggManger);
-				break;
-			default:
-				break;
-			}
-		
-}
+//void ZombieManger::ExecutePlantStrategy(int rowNumber,int columnNumber, int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
+//{
+//	myPlantManger->getHurt(rowNumber, columnNumber, ATTACK_OF_ZOMBIE);
+//	if (myPlantManger->getHealthPoint(rowNumber, columnNumber) <= 0)
+//	{
+//			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+//	}
+//}
+//
+//void ZombieManger::SelectPlantStrategy(int numberOfPlant)
+//{
+//	switch (numberOfPlant){
+//			case NUMBER_OF_PEASHOOTER:
+//				attackPlant(myPeaShooterManger);
+//				break;
+//			case NUMBER_OF_CARROT:
+//				attackPlant(myCarrotManger);
+//				break;
+//			case NUMBER_OF_SUNFLOWER:
+//				attackPlant(mySunflowerManger);
+//				break;
+//			case NUMBER_OF_WALLNUT:
+//				attackPlant(myWallNutManger);
+//				break;
+//			case NUMBER_OF_BLUEEGG:
+//				attackPlant(myBlueEggManger);
+//				break;
+//			default:
+//				break;
+//			}
+//		
+//}

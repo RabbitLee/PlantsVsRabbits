@@ -384,14 +384,14 @@ void FirstPass::mutUpdate(float dt){
 	rabbitAttackPlant(myMapOfPlant);*/
 }
 /*strategy*/
-void FirstPass::setRabbitAttackStrategy(EnemyManger* myenemymanger)
+/*void FirstPass::setRabbitAttackStrategy(EnemyManger* myenemymanger)
 {
 	this->EnemyMangerType = myenemymanger;
 }
 void FirstPass::rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
 {
 	EnemyMangerType->AttackPlant(myMapOfPlant);
-}
+}*/
 
 void FirstPass::refreshPlantButtons() {
 	//peaShooterProducer
@@ -444,41 +444,58 @@ void FirstPass::selectPlant(int number){
 	//myplantIsSeltcted[number] = true;
 }
 
-
+void FirstPass::PlantStrategy(PlantManger* selectPlantManager)
+{
+	this->selectPlantManager = selectPlantManager;
+}
+void FirstPass::ExecutePlantStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime)
+{
+	selectPlantManager->planting(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+}
 bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) {
 	if (rowNumber >= 2 && rowNumber <= WIDTH && columnNumber >= 1 && columnNumber < HEIGHT
 		&& myMapOfPlant[rowNumber][columnNumber] == NO_PLANT) {
 		switch (selectedPlantNumber)
 		{
 		case NUMBER_OF_PEASHOOTER:
-			myPeaShooterManger->planting(rowNumber, columnNumber);
+			PlantStrategy(myPeaShooterManger);
+			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+			/*myPeaShooterManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
 			mySunshine -= PRICE_OF_PEASHOOTER;
-			myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;
+			myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;*/
 			break;
 		case NUMBER_OF_CARROT:
-			myCarrotManger->planting(rowNumber, columnNumber);
+			PlantStrategy(myCarrotManger);
+			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+			/*myCarrotManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_CARROT;
 			mySunshine -= PRICE_OF_CARROT;
-			myRefrigerateTime[NUMBER_OF_CARROT] = REFRIGERATE_TIME_OF_CARROT;
+			myRefrigerateTime[NUMBER_OF_CARROT] = REFRIGERATE_TIME_OF_CARROT;*/
 			break;
 		case NUMBER_OF_SUNFLOWER:
-			mySunflowerManger->planting(rowNumber, columnNumber);
+			PlantStrategy(mySunflowerManger);
+			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+			/*mySunflowerManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_SUNFLOWER;
 			mySunshine -= PRICE_OF_SUNFLOWER;
-			myRefrigerateTime[NUMBER_OF_SUNFLOWER] = REFRIGERATE_TIME_OF_SUNFLOWER;
+			myRefrigerateTime[NUMBER_OF_SUNFLOWER] = REFRIGERATE_TIME_OF_SUNFLOWER;*/
 			break;
 		case NUMBER_OF_WALLNUT:
-			myWallNutManger->planting(rowNumber, columnNumber);
+			PlantStrategy(myWallNutManger);
+			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+			/*myWallNutManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_WALLNUT;
 			mySunshine -= PRICE_OF_WALLNUT;
-			myRefrigerateTime[NUMBER_OF_WALLNUT] = REFRIGERATE_TIME_OF_WALLNUT;
+			myRefrigerateTime[NUMBER_OF_WALLNUT] = REFRIGERATE_TIME_OF_WALLNUT;*/
 			break;
 		case NUMBER_OF_BLUEEGG:
-			myBlueEggManger->planting(rowNumber, columnNumber);
-			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_BLUEEGG;
-			mySunshine -= PRICE_OF_BLUEEGG;
-			myRefrigerateTime[NUMBER_OF_BLUEEGG] = REFRIGERATE_TIME_OF_BLUEEGG;
+			PlantStrategy(myBlueEggManger);
+			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+			//myBlueEggManger->planting(rowNumber, columnNumber);
+			//myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_BLUEEGG;
+			//mySunshine -= PRICE_OF_BLUEEGG;
+			//myRefrigerateTime[NUMBER_OF_BLUEEGG] = REFRIGERATE_TIME_OF_BLUEEGG;
 
 			auto bomb = CallFuncN::create([=](Node*){
 				for (auto zombie : *(myZombieManger->getMapOfEnemy())){

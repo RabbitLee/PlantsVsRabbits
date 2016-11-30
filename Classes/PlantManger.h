@@ -12,7 +12,8 @@ public:
 	void getHurt(int row, int column, int hurt);
 	int getHealthPoint(int row, int column);
 	void updateOfDeath(float dt);
-	void planting(Entity* plant, int row, int column);
+	void ParentPlanting(Entity* plant, int row, int column);
+	virtual void planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
 	virtual Vector<Sprite*>* getPeaInRow(int row) = 0;
 
 protected:
