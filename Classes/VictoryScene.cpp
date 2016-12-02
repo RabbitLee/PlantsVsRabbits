@@ -21,7 +21,7 @@ bool Victory::init(){
 	background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	this->addChild(background, 0);
 
-	auto label = Label::create("Main Menu", "Broadway", 48);
+	auto label = Label::create("Main Menu", "LetterGothicStd-Bold", 48);
 	auto itemLabel = MenuItemLabel::create(
 		label,
 		[](Ref* pSender){

@@ -18,7 +18,7 @@ Scene* FirstPassPause::createScene(RenderTexture* sqr){
 bool FirstPassPause::init(){
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 
-	auto goBackItem = Label::create("Back", "Broadway", 48);
+	auto goBackItem = Label::create("Back", "LetterGothicStd-Bold", 48);
 	auto itemLabel1 = MenuItemLabel::create(
 		goBackItem,
 		[](Ref* pSender){
@@ -27,7 +27,7 @@ bool FirstPassPause::init(){
 	);
 	itemLabel1->setPosition(Point(0, itemLabel1->getContentSize().height * 1.5f));
 
-	auto mainMenu = Label::create("Main Menu", "Broadway", 48);
+	auto mainMenu = Label::create("Main Menu", "LetterGothicStd-Bold", 48);
 	auto itemLabel2 = MenuItemLabel::create(
 		mainMenu,
 		[](Ref* pSender){

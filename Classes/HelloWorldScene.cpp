@@ -46,26 +46,26 @@ bool HelloWorld::init()
 	this->addChild(background, 0);
 
 
-	auto label1 = Label::create("Start", "Broadway", 48);
+	auto label1 = Label::create("Start", "LetterGothicStd-Bold", 48);
 	auto itemLabel1 = MenuItemLabel::create(
 		label1,
 		[](Ref* pSender){ 
 			Director::getInstance()->replaceScene(FirstPass::createScene());
 		}
 	);
-	itemLabel1->setPosition(Point(0, itemLabel1->getContentSize().height * 1.5f));
+	itemLabel1->setPosition(Point(20, itemLabel1->getContentSize().height * 2.0f));
 
-	auto label2 = Label::create("Music", "Broadway", 48);
+	auto label2 = Label::create("Music", "LetterGothicStd-Bold", 48);
 	auto itemLabel2 = MenuItemLabel::create(
 		label2,
 		[](Ref* pSender){
 		Director::getInstance()->replaceScene(Music::createScene());
 		}
 	);
-	itemLabel2->setPosition(Point(0, 0));
+	itemLabel2->setPosition(Point(20,itemLabel1->getContentSize().height * 0.8f));
 
 
-	auto label3 = Label::create("Exit", "Broadway", 48);
+	auto label3 = Label::create("Exit", "LetterGothicStd-Bold", 48);
 	auto itemLabel3 = MenuItemLabel::create(
 		label3,
 		CC_CALLBACK_1(
@@ -73,17 +73,17 @@ bool HelloWorld::init()
 			this
 		)
 	);
-	itemLabel3->setPosition(Point(0, - itemLabel1->getContentSize().height * 3.0f));
+	itemLabel3->setPosition(Point(20, - itemLabel1->getContentSize().height * 1.8f));
 
 	/*attack strategy*/
-	auto label4 = Label::create("Difficulty", "Broadway", 48);
+	auto label4 = Label::create("Difficulty", "LetterGothicStd-Bold", 48);
 	auto itemLabel4 = MenuItemLabel::create(
 		label4,
 		[](Ref* pSender){
 		Director::getInstance()->replaceScene(Difficulty::createScene());
 		}
 	);
-	itemLabel4->setPosition(Point(0,  - itemLabel1->getContentSize().height * 1.5f));
+	itemLabel4->setPosition(Point(20,  - itemLabel1->getContentSize().height * 0.5f));
 
 	auto menu = Menu::create(itemLabel1, itemLabel2, itemLabel3, itemLabel4, NULL);
 	menu->setPosition(Point(LENGTH_OF_SIDE * 2.0f, LENGTH_OF_SIDE * 3.0f));

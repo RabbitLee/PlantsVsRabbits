@@ -24,7 +24,7 @@ bool Difficulty::init()
 	musicbg->setPosition(Point(LENGTH_OF_SIDE*WIDTH*0.5f, LENGTH_OF_SIDE*HEIGHT*0.5f));
 	this->addChild(musicbg);
 
-		auto label1 = Label::create("Easy", "Broadway", 36);
+		auto label1 = Label::create("Easy", "LetterGothicStd-Bold", 36);
 		auto itemLabel1 = MenuItemLabel::create(
 			label1,
 			[](Ref* pSender){
@@ -33,7 +33,7 @@ bool Difficulty::init()
 		);
 		itemLabel1->setPosition(Point(-LENGTH_OF_SIDE * 3.5f, itemLabel1->getContentSize().height * 1.5f));
 		
-		auto label2 = Label::create("Normal", "Broadway", 36);
+		auto label2 = Label::create("Normal", "LetterGothicStd-Bold", 36);
 		auto itemLabel2 = MenuItemLabel::create(
 			label2,
 			[](Ref* pSender){
@@ -42,7 +42,7 @@ bool Difficulty::init()
 		);
 		itemLabel2->setPosition(Point(-LENGTH_OF_SIDE * 3.5f, 0));
 		
-		auto label3 = Label::create("Hard", "Broadway", 36);
+		auto label3 = Label::create("Hard", "LetterGothicStd-Bold", 36);
 		auto itemLabel3 = MenuItemLabel::create(
 			label3,
 			[](Ref* pSender){
@@ -51,7 +51,7 @@ bool Difficulty::init()
 		);
 		itemLabel3->setPosition(Point(-LENGTH_OF_SIDE * 3.5f, -itemLabel1->getContentSize().height * 1.5f));
 		
-		auto label5 = Label::create("Main Menu", "Broadway", 36);
+		auto label5 = Label::create("Main Menu", "LetterGothicStd-Bold", 36);
 		auto itemLabel5 = MenuItemLabel::create(
 			label5,
 			[](Ref* pSender){

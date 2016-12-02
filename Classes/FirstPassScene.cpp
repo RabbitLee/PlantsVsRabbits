@@ -23,7 +23,7 @@ bool FirstPass::init(){
 
 	mySunshine = INITIAL_SUNSHINE;
 	myLastUpdateSunshine = INITIAL_SUNSHINE;
-	mySunshineLabel = Label::create(Value(mySunshine).asString(), "Broadway", 30);
+	mySunshineLabel = Label::create(Value(mySunshine).asString(), "LetterGothicStd-Bold", 30);
 	mySunshineLabel->setColor(Color3B::ORANGE);
 	mySunshineLabel->setPosition(Point(0.5f*LENGTH_OF_SIDE, (HEIGHT - 0.75f)*LENGTH_OF_SIDE));
 	this->addChild(mySunshineLabel);
@@ -150,7 +150,7 @@ bool FirstPass::init(){
 	myRefrigerateTime[NUMBER_OF_BLUEEGG] = REFRIGERATE_TIME_OF_BLUEEGG;
 
 	for (int i = 1; i <= NUMBER_OF_PLANT; i++){
-		myRefrigerateTimeLabel[i] = Label::create(Value(myRefrigerateTime[i]).asString(), "Broadway", 20);
+		myRefrigerateTimeLabel[i] = Label::create(Value(myRefrigerateTime[i]).asString(), "LetterGothicStd-Bold", 20);
 		myRefrigerateTimeLabel[i]->setColor(Color3B::ORANGE);
 		myRefrigerateTimeLabel[i]->setPosition(Point(LENGTH_OF_SIDE*(i + 1) - 20, LENGTH_OF_SIDE*(HEIGHT - 1) + 15));
 		this->addChild(myRefrigerateTimeLabel[i]);
