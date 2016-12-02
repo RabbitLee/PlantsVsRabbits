@@ -164,7 +164,6 @@ bool FirstPass::init(){
 		int columnNumber = position.y / LENGTH_OF_SIDE + 1;
 		
 		return producePlants(rowNumber, columnNumber, selectedPlantNumber);
-
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(plantProduceListener, this);
 

@@ -3,6 +3,7 @@
 #include "SimpleAudioEngine.h"
 #include "FailureScene.h"
 #include "MusicScene.h"
+#include "DifficultyScene.h"
 
 USING_NS_CC;
 
@@ -63,6 +64,7 @@ bool HelloWorld::init()
 	);
 	itemLabel2->setPosition(Point(0, 0));
 
+
 	auto label3 = Label::create("Exit", "Broadway", 48);
 	auto itemLabel3 = MenuItemLabel::create(
 		label3,
@@ -71,9 +73,19 @@ bool HelloWorld::init()
 			this
 		)
 	);
-	itemLabel3->setPosition(Point(0, - itemLabel1->getContentSize().height * 1.5f));
+	itemLabel3->setPosition(Point(0, - itemLabel1->getContentSize().height * 3.0f));
 
-	auto menu = Menu::create(itemLabel1, itemLabel2, itemLabel3, NULL);
+	/*attack strategy*/
+	auto label4 = Label::create("Difficulty", "Broadway", 48);
+	auto itemLabel4 = MenuItemLabel::create(
+		label4,
+		[](Ref* pSender){
+		Director::getInstance()->replaceScene(Difficulty::createScene());
+		}
+	);
+	itemLabel4->setPosition(Point(0,  - itemLabel1->getContentSize().height * 1.5f));
+
+	auto menu = Menu::create(itemLabel1, itemLabel2, itemLabel3, itemLabel4, NULL);
 	menu->setPosition(Point(LENGTH_OF_SIDE * 2.0f, LENGTH_OF_SIDE * 3.0f));
 	this->addChild(menu, 1);
     
