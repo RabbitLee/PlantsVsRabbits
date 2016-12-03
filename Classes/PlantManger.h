@@ -14,6 +14,7 @@ public:
 	void updateOfDeath(float dt);
 	void planting(Entity* plant, int row, int column);
 	virtual Vector<Sprite*>* getPeaInRow(int row) = 0;
+	void removePlant(int row, int column);
 
 protected:
 	Entity* myMapOfPlant[WIDTH + 1][HEIGHT + 1];

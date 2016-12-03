@@ -32,11 +32,13 @@ bool FirstPass::init(){
 	rainPicture->setPosition(Point(0.5f*LENGTH_OF_SIDE, (HEIGHT - 0.25f)*LENGTH_OF_SIDE));
 	this->addChild(rainPicture);
 
+	/* redo/undo pattern */
+	currentSize = 0;
 	auto undoButton = MenuItemImage::create(
 		"Pause.png",
 		"Pause.png",
 		[&](Ref* pSender){
-						
+		unProducePlants();
 	}
 	);
 	undoButton->setPosition(Point(LENGTH_OF_SIDE*(-1.0f), 0));
@@ -375,24 +377,28 @@ bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) 
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
 			mySunshine -= PRICE_OF_PEASHOOTER;
 			myRefrigerateTime[NUMBER_OF_PEASHOOTER] = REFRIGERATE_TIME_OF_PEASHOTER;
+			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_PEASHOOTER);
 			break;
 		case NUMBER_OF_CARROT:
 			myCarrotManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_CARROT;
 			mySunshine -= PRICE_OF_CARROT;
 			myRefrigerateTime[NUMBER_OF_CARROT] = REFRIGERATE_TIME_OF_CARROT;
+			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_CARROT);
 			break;
 		case NUMBER_OF_SUNFLOWER:
 			mySunflowerManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_SUNFLOWER;
 			mySunshine -= PRICE_OF_SUNFLOWER;
 			myRefrigerateTime[NUMBER_OF_SUNFLOWER] = REFRIGERATE_TIME_OF_SUNFLOWER;
+			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_SUNFLOWER);
 			break;
 		case NUMBER_OF_WALLNUT:
 			myWallNutManger->planting(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_WALLNUT;
 			mySunshine -= PRICE_OF_WALLNUT;
 			myRefrigerateTime[NUMBER_OF_WALLNUT] = REFRIGERATE_TIME_OF_WALLNUT;
+			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_WALLNUT);
 			break;
 		case NUMBER_OF_BLUEEGG:
 			myBlueEggManger->planting(rowNumber, columnNumber);
@@ -440,4 +446,47 @@ bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) 
 	else{
 		return false;
 	}
+}
+
+void FirstPass::unProducePlants() {
+	if (currentSize > 0) {
+		currentSize--;
+		int rowNumber = commandVector.at(currentSize).rowNumber;
+		int columnNumber = commandVector.at(currentSize).columnNumber;
+		switch (commandVector.at(currentSize).plantNumber) {
+		case NUMBER_OF_PEASHOOTER:
+			myPeaShooterManger->removePlant(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+			mySunshine += PRICE_OF_PEASHOOTER;
+			break;
+		case NUMBER_OF_CARROT:
+			myCarrotManger->removePlant(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+			mySunshine += PRICE_OF_CARROT;
+			break;
+		case NUMBER_OF_SUNFLOWER:
+			mySunflowerManger->removePlant(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+			mySunshine += PRICE_OF_SUNFLOWER;
+			break;
+		case NUMBER_OF_WALLNUT:
+			myWallNutManger->removePlant(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+			mySunshine += PRICE_OF_WALLNUT;
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+
+void FirstPass::addPlantToVector(int rowNumber, int columnNumber, int plantNumber) {
+	if (currentSize < commandVector.size()) {
+		while (currentSize < commandVector.size()) {
+			commandVector.pop_back();
+		}
+	} 
+	commandVector.push_back(Command{ rowNumber, columnNumber, plantNumber });
+	currentSize++;
 }

@@ -46,3 +46,9 @@ void PlantManger::planting(Entity* plant, int row, int column){
 	myMapOfPlant[row][column] = plant;
 	this->addChild(plant);
 }
+
+void PlantManger::removePlant(int row, int column) {
+	auto plant = myMapOfPlant[row][column];
+	plant->removeFromParent();
+	myMapOfPlant[row][column] = NULL;
+}

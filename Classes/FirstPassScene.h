@@ -13,7 +13,7 @@
 #include "ZombieManger.h"
 #include "EvilRabbitManger.h"
 
-#include <stack>
+#include <vector>
 
 using namespace cocos2d;
 
@@ -27,7 +27,6 @@ public:
 
 	void selectPlant(int number);
 	bool producePlants(int rowNumber, int columnNumber, int plantNumber);
-	void undoProducePlants(int rowNumber, int colummNumber);
 
 public:
 	struct Command {
@@ -36,8 +35,13 @@ public:
 	};
 
 private:
-	std::stack<Command> CommandStack;
+	std::vector<Command> commandVector;
+	int currentSize;	/* size of commands from begin to this time (without undo commands) */
 
+public:
+	void addPlantToVector(int rowNumber, int columnNumber, int plantNumber);
+	void unProducePlants();
+	void reProducePlants();
 
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
