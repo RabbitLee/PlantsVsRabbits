@@ -123,6 +123,9 @@
     <ClCompile Include="..\Classes\ZombieManger.cpp">
       <Filter>src\Rabbits\Zombie</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\DifficultyScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ZombieManger.h">
       <Filter>src\Rabbits\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DifficultyScene.h">
+      <Filter>src\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
