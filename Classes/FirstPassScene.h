@@ -15,10 +15,12 @@
 #include "EvilRabbitManger.h"
 #include "EnemyManger.h"
 
+#include <vector>
+
 using namespace cocos2d;
 
 class FirstPass: public Layer{
-public :
+public:
 	static Scene* createScene();
 	virtual bool init();
 	CREATE_FUNC(FirstPass);
@@ -31,6 +33,21 @@ public :
 	void ExecutePlantStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
     void setRabbitAttackStrategy(EnemyManger* myenemymanger);
 	void rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
+public:
+	struct Command {
+		int rowNumber, columnNumber;
+		int plantNumber;
+	};
+
+private:
+	std::vector<Command> commandVector;
+	int currentSize;	/* size of commands from begin to this time (without undo commands) */
+
+public:
+	void addPlantToVector(int rowNumber, int columnNumber, int plantNumber);
+	void unProducePlants();
+	void reProducePlants();
+
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
 
