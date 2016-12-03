@@ -57,3 +57,8 @@ void PeaShooterManger::mutUpdate(float dt){
 void PeaShooterManger::setShootInRow(int row, bool shoot){
 	shootInRow[row] = shoot;
 }
+void PeaShooterManger::removePlant(int row, int column, int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine) {
+	PlantManger::ParentRemovePlant(row, column);
+	myMapOfPlant[row][column] = NO_PLANT;
+	mySunshine += PRICE_OF_PEASHOOTER;
+}

@@ -15,7 +15,7 @@ public:
 	virtual Vector<Sprite*>* getPeaInRow(int row);
 	void mutUpdate(float dt);
 	void setShootInRow(int row, bool shoot);
-
+	virtual void removePlant(int row, int column, int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine);
 private:
 	Vector<Sprite*> myMapOfPea[HEIGHT + 1];
 	bool shootInRow[HEIGHT + 1];

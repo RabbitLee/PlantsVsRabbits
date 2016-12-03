@@ -17,3 +17,9 @@ void WallNutManger::planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEI
 
 void WallNutManger::mutUpdate(float dt){
 }
+
+void WallNutManger::removePlant(int row, int column, int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine) {
+	PlantManger::ParentRemovePlant(row, column);
+	myMapOfPlant[row][column] = NO_PLANT;
+	mySunshine += PRICE_OF_PEASHOOTER;
+}

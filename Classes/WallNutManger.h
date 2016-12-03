@@ -11,7 +11,7 @@ public:
 	void planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
 	void mutUpdate(float dt);
 	virtual Vector<Sprite*>* getPeaInRow(int row) { return NULL; }
-
+	virtual void removePlant(int row, int column, int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine);
 private:
 	static WallNutManger* myWallNutManager;
 

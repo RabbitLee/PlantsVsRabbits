@@ -15,8 +15,8 @@ public:
 	void ParentPlanting(Entity* plant, int row, int column);
 	virtual void planting(int row, int column,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
 	virtual Vector<Sprite*>* getPeaInRow(int row) = 0;
-	void removePlant(int row, int column);
-
+	void ParentRemovePlant(int row, int column);
+	virtual void removePlant(int row, int column, int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine){}
 protected:
 	Entity* myMapOfPlant[WIDTH + 1][HEIGHT + 1];
 

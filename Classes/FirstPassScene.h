@@ -31,7 +31,11 @@ public:
 
 	void PlantStrategy(PlantManger* selectPlantManager);
 	void ExecutePlantStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
-    void setRabbitAttackStrategy(EnemyManger* myenemymanger);
+    
+	void RemoveStrategy(PlantManger* selectPlantManager);
+	void ExecuteRemoveStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine);
+
+	void setRabbitAttackStrategy(EnemyManger* myenemymanger);
 	void rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 public:
 	struct Command {
@@ -60,6 +64,7 @@ private:
 	BlueEggManger* myBlueEggManger;
 	/*choose a plantManager*/
 	PlantManger *selectPlantManager;
+	PlantManger *selectRemoveManager;
 
 	Label* myRefrigerateTimeLabel[NUMBER_OF_PLANT + 1];
 	int myRefrigerateTime[NUMBER_OF_PLANT + 1];

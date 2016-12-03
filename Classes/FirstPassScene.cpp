@@ -466,6 +466,14 @@ bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) 
 	}
 }
 
+void FirstPass::RemoveStrategy(PlantManger* selectPlantManager)
+{
+	this->selectRemoveManager = selectPlantManager;
+}
+void FirstPass::ExecuteRemoveStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine)
+{
+	selectRemoveManager->removePlant(rowNumber, columnNumber, myMapOfPlant, mySunshine);
+}
 void FirstPass::unProducePlants() {
 	if (currentSize > 0) {
 		currentSize--;
@@ -473,24 +481,32 @@ void FirstPass::unProducePlants() {
 		int columnNumber = commandVector.at(currentSize).columnNumber;
 		switch (commandVector.at(currentSize).plantNumber) {
 		case NUMBER_OF_PEASHOOTER:
-			myPeaShooterManger->removePlant(rowNumber, columnNumber);
+			RemoveStrategy(myPeaShooterManger);
+			ExecuteRemoveStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine);
+			/*myPeaShooterManger->removePlant(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_PEASHOOTER;
+			mySunshine += PRICE_OF_PEASHOOTER;*/
 			break;
 		case NUMBER_OF_CARROT:
-			myCarrotManger->removePlant(rowNumber, columnNumber);
+			RemoveStrategy(myCarrotManger);
+			ExecuteRemoveStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine);
+			/*myCarrotManger->removePlant(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_CARROT;
+			mySunshine += PRICE_OF_CARROT;*/
 			break;
 		case NUMBER_OF_SUNFLOWER:
-			mySunflowerManger->removePlant(rowNumber, columnNumber);
+			RemoveStrategy(mySunflowerManger);
+			ExecuteRemoveStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine);
+			/*mySunflowerManger->removePlant(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_SUNFLOWER;
+			mySunshine += PRICE_OF_SUNFLOWER;*/
 			break;
 		case NUMBER_OF_WALLNUT:
-			myWallNutManger->removePlant(rowNumber, columnNumber);
+			RemoveStrategy(myWallNutManger);
+			ExecuteRemoveStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine);
+			/*myWallNutManger->removePlant(rowNumber, columnNumber);
 			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_WALLNUT;
+			mySunshine += PRICE_OF_WALLNUT;*/
 			break;
 		default:
 			break;

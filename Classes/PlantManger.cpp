@@ -51,7 +51,7 @@ void PlantManger::planting(int row, int column, int myMapOfPlant[WIDTH + 1][HEIG
 {
 }
 
-void PlantManger::removePlant(int row, int column) {
+void PlantManger::ParentRemovePlant(int row, int column) {
 	auto plant = myMapOfPlant[row][column];
 	plant->removeFromParent();
 	myMapOfPlant[row][column] = NULL;
