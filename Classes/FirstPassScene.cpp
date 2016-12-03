@@ -35,13 +35,20 @@ bool FirstPass::init(){
 	/* redo/undo pattern */
 	currentSize = 0;
 	auto undoButton = MenuItemImage::create(
-		"Pause.png",
-		"Pause.png",
+		"undo.png",
+		"undo.png",
 		[&](Ref* pSender){
 		unProducePlants();
 	}
 	);
-	undoButton->setPosition(Point(LENGTH_OF_SIDE*(-1.0f), 0));
+	undoButton->setPosition(Point(LENGTH_OF_SIDE*(-2.0f), 0));
+	auto redoButton = MenuItemImage::create(
+		"redo.png",
+		"redo.png",
+		[&](Ref* pSender){
+		reProducePlants();
+	});
+	redoButton->setPosition(Point(LENGTH_OF_SIDE*(-1.0f), 0));
 	auto pauseButton = MenuItemImage::create(
 		"Pause.png",
 		"Pause-.png",
@@ -54,7 +61,7 @@ bool FirstPass::init(){
 	}
 	);
 	
-	auto menu = Menu::create(undoButton, pauseButton, NULL);
+	auto menu = Menu::create(undoButton, redoButton, pauseButton, NULL);
 	menu->setPosition(Point(LENGTH_OF_SIDE*(WIDTH - 0.5f), LENGTH_OF_SIDE*(HEIGHT - 0.5f)));
 	this->addChild(menu);
 
@@ -477,9 +484,38 @@ void FirstPass::unProducePlants() {
 		default:
 			break;
 		}
-	}
+	} 
 }
 
+void FirstPass::reProducePlants(){
+	if (currentSize < commandVector.size()) {
+		int rowNumber = commandVector.at(currentSize).rowNumber;
+		int columnNumber = commandVector.at(currentSize).columnNumber;
+		switch (commandVector.at(currentSize).plantNumber) {
+		case NUMBER_OF_PEASHOOTER:
+			myPeaShooterManger->planting(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_PEASHOOTER;
+			mySunshine -= PRICE_OF_PEASHOOTER;
+			break;
+		case NUMBER_OF_CARROT:
+			myCarrotManger->planting(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_CARROT;
+			mySunshine -= PRICE_OF_CARROT;
+			break;
+		case NUMBER_OF_SUNFLOWER:
+			mySunflowerManger->planting(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_SUNFLOWER;
+			mySunshine -= PRICE_OF_SUNFLOWER;
+			break;
+		case NUMBER_OF_WALLNUT:
+			myWallNutManger->planting(rowNumber, columnNumber);
+			myMapOfPlant[rowNumber][columnNumber] = NUMBER_OF_WALLNUT;
+			mySunshine -= PRICE_OF_WALLNUT;
+			break;
+		}
+		currentSize++;
+	}
+}
 
 void FirstPass::addPlantToVector(int rowNumber, int columnNumber, int plantNumber) {
 	if (currentSize < commandVector.size()) {
