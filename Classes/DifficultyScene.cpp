@@ -81,5 +81,5 @@ void Difficulty::setStrategy(EnemyAttackStrategy *Strategy)
 }
 void Difficulty::ExecuteStrategy()
 {
-	attackStrategy->setAttack();
+	//attackStrategy->setAttack();
 }
