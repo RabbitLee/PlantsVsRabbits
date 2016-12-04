@@ -9,6 +9,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)
 {
+	printf("%d", 3);
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 

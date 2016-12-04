@@ -215,6 +215,9 @@
     <ClInclude Include="..\Classes\DifficultyScene.h">
       <Filter>src\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\MyList.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
