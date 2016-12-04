@@ -17,6 +17,8 @@
 
 #include <vector>
 
+#include "EnemyAttackStrategy.h"
+
 using namespace cocos2d;
 
 class FirstPass: public Layer{
@@ -37,6 +39,7 @@ public:
 
 	void setRabbitAttackStrategy(EnemyManger* myenemymanger);
 	void rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
+
 public:
 	struct Command {
 		int rowNumber, columnNumber;
@@ -52,9 +55,13 @@ public:
 	void unProducePlants();
 	void reProducePlants();
 
+	void setStrategy(EnemyAttackStrategy *Strategy);
+	void ExecuteStrategy();
+
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
 
+	EnemyAttackStrategy *attackStrategy;
 	//bool myplantIsSeltcted[NUMBER_OF_PLANT + 1];
 	int selectedPlantNumber;
 	PeaShooterManger* myPeaShooterManger;

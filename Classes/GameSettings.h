@@ -15,7 +15,7 @@
 #define	PRIORITY_OF_RABBIT 3
 #define PRIORITY_OF_SHOOTER 2
 #define PRIORITY_OF_PLANT 1
-
+#define PRIORITY_OF_STRATEGY 5
 /* Plants */
 #define	NUMBER_OF_PLANT 5
 #define NO_PLANT 0

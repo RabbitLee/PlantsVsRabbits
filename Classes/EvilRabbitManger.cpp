@@ -7,6 +7,7 @@ bool EvilRabbitManger::init(){
 	EnemyManger::initial();
 
 	speed = SPEED_OF_EVILRABBIT;
+	Evilattack = ATTACK_OF_EVILRABBIT;
 
 	this->schedule(schedule_selector(EnemyManger::mutUpdate), INTERVAL_TIME);
 	this->schedule(schedule_selector(EvilRabbitManger::mutUpdate), INTERVAL_TIME);
@@ -42,4 +43,13 @@ void EvilRabbitManger::mutUpdate(float dt){
 			this->addChild(evilRabbit);
 		}
 	}
+}
+
+int EvilRabbitManger::getSpeed()
+{
+	return speed;
+}
+int EvilRabbitManger::getAttack()
+{
+	return Evilattack;
 }

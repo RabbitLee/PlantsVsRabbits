@@ -7,7 +7,11 @@ ZombieManger* ZombieManger::myZombieManager = nullptr;
 bool ZombieManger::init(){
 	EnemyManger::initial();
 
+	
+	
 	speed = SPEED_OF_ZOMBIE;
+
+	Zombieattack = ATTACK_OF_ZOMBIE;
 
 	this->schedule(schedule_selector(EnemyManger::mutUpdate), INTERVAL_TIME);
 	this->schedule(schedule_selector(ZombieManger::mutUpdate), INTERVAL_TIME);
@@ -44,7 +48,14 @@ void ZombieManger::mutUpdate(float dt){
 		}
 	}
 }
-
+int ZombieManger::getSpeed()
+{
+	return speed;
+}
+int ZombieManger::getAttack()
+{
+	return Zombieattack;
+}
 /*strategy*/
 //void ZombieManger::AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
 //{
