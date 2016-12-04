@@ -47,6 +47,54 @@ bool FirstPass::init(){
 	menu->setPosition(Point(LENGTH_OF_SIDE*(WIDTH - 0.5f), LENGTH_OF_SIDE*(HEIGHT - 0.5f)));
 	this->addChild(menu);
 
+	auto label1 = Label::create("Easy", "LetterGothicStd-Bold", 24);
+		auto itemLabel1 = MenuItemLabel::create(
+			label1,
+			[&](Ref* pSender){
+				EasyStrategy *Strategy = new EasyStrategy();
+				setStrategy(Strategy);
+				ExecuteStrategy();
+			//CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("LaLaLa.mp3");
+		}
+		);
+		itemLabel1->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_BLUEEGG + 1 - 0.5f),
+		LENGTH_OF_SIDE*0.5f));
+
+
+		auto label2 = Label::create("Normal", "LetterGothicStd-Bold", 24);
+		auto itemLabel2 = MenuItemLabel::create(
+			label2,
+			[&](Ref* pSender){
+				NormalStrategy *Strategy = new NormalStrategy();
+				setStrategy(Strategy);
+				ExecuteStrategy();
+			//CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("Tingge.mp3");
+		}
+		);
+		itemLabel2->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_BLUEEGG + 2 - 0.5f),
+		LENGTH_OF_SIDE*0.5f));
+
+
+		auto label3 = Label::create("Hard", "LetterGothicStd-Bold", 24);
+		auto itemLabel3 = MenuItemLabel::create(
+			label3,
+			[&](Ref* pSender){
+				HardStrategy *Strategy = new HardStrategy();
+				setStrategy(Strategy);
+				ExecuteStrategy();
+			//CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("We_Got_The_Power.mp3");
+		}
+		);
+		itemLabel3->setPosition(Point(LENGTH_OF_SIDE*(NUMBER_OF_BLUEEGG + 3 - 0.5f),
+		LENGTH_OF_SIDE*0.5f));
+	   
+
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+
+		auto Diffultymenu = Menu::create(itemLabel1, itemLabel2, itemLabel3, NULL);
+	    Diffultymenu->setPosition(Point(visibleSize.width /5, visibleSize.height / 2));
+	    this->addChild(Diffultymenu);
+
 	/* Planting */
 	selectPlant(NO_PLANT);
 	myPeaShooterManger = PeaShooterManger::getInstance();
@@ -189,7 +237,7 @@ bool FirstPass::init(){
 	}
 
 
-
+	
 	/* Update */
 	this->schedule(schedule_selector(FirstPass::mutUpdate), INTERVAL_TIME);
 
@@ -301,8 +349,8 @@ void FirstPass::mutUpdate(float dt){
 			}
 		}
 	};
-	rabbitAttackPlant(myZombieManger, SPEED_OF_ZOMBIE);
-	rabbitAttackPlant(myEvilRabbitManger, SPEED_OF_EVILRABBIT);
+	rabbitAttackPlant(myZombieManger, myZombieManger->getSpeed());
+	rabbitAttackPlant(myEvilRabbitManger, myEvilRabbitManger->getSpeed());
 
 	/*setRabbitAttackStrategy(myZombieManger);
 	rabbitAttackPlant(myMapOfPlant);
@@ -443,4 +491,13 @@ bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) 
 	else{
 		return false;
 	}
+}
+
+void FirstPass::setStrategy(EnemyAttackStrategy *Strategy)
+{
+	attackStrategy = Strategy;
+}
+void FirstPass::ExecuteStrategy()
+{
+	attackStrategy->setAttack(myZombieManger->speed, myZombieManger->Zombieattack, myEvilRabbitManger->speed, myEvilRabbitManger->Evilattack );
 }

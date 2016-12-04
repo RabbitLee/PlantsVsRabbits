@@ -19,10 +19,11 @@ public:
 
 	Entity* getWinEnemy();
 
+	int speed;
 	//virtual void AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
 protected:
 	Vector<Entity*> myMapOfEnemy;
-	int speed;
+
 	int waveNumber, enemyNumberInWave;
 	int frequenceOfEnemy;
 	int enemyNumberInRow[HEIGHT + 1];

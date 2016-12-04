@@ -15,6 +15,7 @@
 #include "EvilRabbitManger.h"
 #include "EnemyManger.h"
 
+#include "EnemyAttackStrategy.h"
 using namespace cocos2d;
 
 class FirstPass: public Layer{
@@ -31,9 +32,13 @@ public :
 	void ExecutePlantStrategy(int rowNumber, int columnNumber,int myMapOfPlant[WIDTH + 1][HEIGHT + 1], int &mySunshine, int *myRefrigerateTime);
     void setRabbitAttackStrategy(EnemyManger* myenemymanger);
 	void rabbitAttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1]);
+
+	void setStrategy(EnemyAttackStrategy *Strategy);
+	void ExecuteStrategy();
 private:
 	int myMapOfPlant[WIDTH + 1][HEIGHT + 1];
 
+	EnemyAttackStrategy *attackStrategy;
 	//bool myplantIsSeltcted[NUMBER_OF_PLANT + 1];
 	int selectedPlantNumber;
 	PeaShooterManger* myPeaShooterManger;

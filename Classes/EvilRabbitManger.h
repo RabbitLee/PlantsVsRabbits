@@ -14,6 +14,8 @@ public:
 
 	static Wave waveOfEvilRabbit[NUMBER_OF_EVILRABBIT_WAVE + 1];
 
+	int getSpeed();
+	int Evilattack;
 private:
 	static EvilRabbitManger* myEvilRabbitManager; 
 

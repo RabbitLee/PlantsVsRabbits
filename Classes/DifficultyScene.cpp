@@ -28,6 +28,9 @@ bool Difficulty::init()
 		auto itemLabel1 = MenuItemLabel::create(
 			label1,
 			[](Ref* pSender){
+				/*EasyStrategy *Strategy = new EasyStrategy();
+				setStrategy(Strategy);
+				ExecuteStrategy();*/
 			CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("LaLaLa.mp3");
 		}
 		);
@@ -37,6 +40,9 @@ bool Difficulty::init()
 		auto itemLabel2 = MenuItemLabel::create(
 			label2,
 			[](Ref* pSender){
+				/*NormalStrategy *Strategy = new NormalStrategy();
+				setStrategy(Strategy);
+				ExecuteStrategy();*/
 			CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("Tingge.mp3");
 		}
 		);
@@ -46,6 +52,9 @@ bool Difficulty::init()
 		auto itemLabel3 = MenuItemLabel::create(
 			label3,
 			[](Ref* pSender){
+				/*HardStrategy *Strategy = new HardStrategy();
+				setStrategy(Strategy);
+				ExecuteStrategy();*/
 			CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("We_Got_The_Power.mp3");
 		}
 		);
@@ -65,4 +74,12 @@ bool Difficulty::init()
 	this->addChild(menu);
 
 	return true;
+}
+void Difficulty::setStrategy(EnemyAttackStrategy *Strategy)
+{
+	attackStrategy = Strategy;
+}
+void Difficulty::ExecuteStrategy()
+{
+	attackStrategy->setAttack();
 }

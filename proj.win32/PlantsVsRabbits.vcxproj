@@ -145,6 +145,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClCompile Include="..\Classes\BlueEggManger.cpp" />
     <ClCompile Include="..\Classes\Carrot.cpp" />
     <ClCompile Include="..\Classes\CarrotManger.cpp" />
+    <ClCompile Include="..\Classes\DifficultyScene.cpp" />
     <ClCompile Include="..\Classes\EnemyManger.cpp" />
     <ClCompile Include="..\Classes\Entity.cpp" />
     <ClCompile Include="..\Classes\EvilRabbit.cpp" />
@@ -174,6 +175,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClInclude Include="..\Classes\BlueEggManger.h" />
     <ClInclude Include="..\Classes\Carrot.h" />
     <ClInclude Include="..\Classes\CarrotManger.h" />
+    <ClInclude Include="..\Classes\DifficultyScene.h" />
     <ClInclude Include="..\Classes\EnemyManger.h" />
     <ClInclude Include="..\Classes\Entity.h" />
     <ClInclude Include="..\Classes\EvilRabbit.h" />

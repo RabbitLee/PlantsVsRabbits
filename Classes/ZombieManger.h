@@ -5,7 +5,7 @@
 #include "EnemyManger.h"
 #include "PlantManger.h"
 #include "GameSettings.h"
-
+#include "EnemyAttackStrategy.h"
 
 class ZombieManger :public EnemyManger{
 public:
@@ -18,10 +18,12 @@ public:
 	void mutUpdate(float dt);
 
 	static Wave waveOfZombie[NUMBER_OF_ZOMBIE_WAVE + 1];
-
+	int ZombieManger::getSpeed();
+	int Zombieattack;
 private:
 	static ZombieManger* myZombieManager;
 	PlantManger* myPlantManger;
+	
 public:
 	static ZombieManger* getInstance() {
 		if (myZombieManager == nullptr) {
