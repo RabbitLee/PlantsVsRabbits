@@ -39,9 +39,10 @@ void EnemyAttackStrategy::setAttack( int &ZombieSpeed, int &ZombieAttack, int &E
 void EasyStrategy::setAttack( int &ZombieSpeed, int &ZombieAttack, int &EvilSpeed, int &EvilAttack )
 {
 	ZombieSpeed = 1;
-	ZombieAttack = 2;
+	ZombieAttack = 1;
 	EvilSpeed = 2;
-	EvilAttack = 3;
+	EvilAttack = 2;
+
 	/*myStrategy->setNumOfZombieWave(NUMBER_OF_ZOMBIE_WAVE - 1);
 	myStrategy->setNumOfEvilWave(NUMBER_OF_EVILRABBIT_WAVE - 1);
 	Wave *contOfZombie = new Wave[myStrategy->getNumOfZombieWave() + 1];
@@ -102,7 +103,8 @@ void HardStrategy::setAttack( int &ZombieSpeed, int &ZombieAttack, int &EvilSpee
 	ZombieSpeed = 20;
 	ZombieAttack = 2;
 	EvilSpeed = 10;
-	EvilAttack = 2;
+	EvilAttack = 3;
+
 	//myZombieManger->setAttack(2);
 	//myEvilRabbitManger->setAttack(2);
 	//myZombieManger->setSpeed(20);

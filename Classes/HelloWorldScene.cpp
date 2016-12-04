@@ -73,10 +73,10 @@ bool HelloWorld::init()
 			this
 		)
 	);
-	itemLabel3->setPosition(Point(20, - itemLabel1->getContentSize().height * 1.8f));
+	itemLabel3->setPosition(Point(20, - itemLabel1->getContentSize().height * 0.5f));
 
 	/*attack strategy*/
-	auto label4 = Label::create("Difficulty", "LetterGothicStd-Bold", 48);
+	/*auto label4 = Label::create("Difficulty", "LetterGothicStd-Bold", 48);
 	auto itemLabel4 = MenuItemLabel::create(
 		label4,
 		[](Ref* pSender){
@@ -84,8 +84,8 @@ bool HelloWorld::init()
 		}
 	);
 	itemLabel4->setPosition(Point(20,  - itemLabel1->getContentSize().height * 0.5f));
-
-	auto menu = Menu::create(itemLabel1, itemLabel2, itemLabel3, itemLabel4, NULL);
+*/
+	auto menu = Menu::create(itemLabel1, itemLabel2, itemLabel3, NULL);
 	menu->setPosition(Point(LENGTH_OF_SIDE * 2.0f, LENGTH_OF_SIDE * 3.0f));
 	this->addChild(menu, 1);
     

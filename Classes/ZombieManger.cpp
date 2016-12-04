@@ -52,6 +52,10 @@ int ZombieManger::getSpeed()
 {
 	return speed;
 }
+int ZombieManger::getAttack()
+{
+	return Zombieattack;
+}
 /*strategy*/
 //void ZombieManger::AttackPlant(int myMapOfPlant[WIDTH + 1][HEIGHT + 1])
 //{

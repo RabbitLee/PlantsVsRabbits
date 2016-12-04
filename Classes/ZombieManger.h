@@ -18,7 +18,8 @@ public:
 	void mutUpdate(float dt);
 
 	static Wave waveOfZombie[NUMBER_OF_ZOMBIE_WAVE + 1];
-	int ZombieManger::getSpeed();
+	int getSpeed();
+	int getAttack();
 	int Zombieattack;
 private:
 	static ZombieManger* myZombieManager;

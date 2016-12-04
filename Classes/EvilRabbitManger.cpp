@@ -49,3 +49,7 @@ int EvilRabbitManger::getSpeed()
 {
 	return speed;
 }
+int EvilRabbitManger::getAttack()
+{
+	return Evilattack;
+}

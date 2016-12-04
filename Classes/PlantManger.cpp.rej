@@ -1,0 +1,10 @@
+diff a/Classes/PlantManger.cpp b/Classes/PlantManger.cpp	(rejected hunks)
+@@ -36,7 +36,7 @@
+ 	}
+ }
+ 
+-void PlantManger::planting(Entity* plant, int row, int column){
++void PlantManger::ParentPlanting(Entity* plant, int row, int column){
+ 	Point position;
+ 	position.x = (row - 0.5f)*LENGTH_OF_SIDE;
+ 	position.y = (column - 0.5f)*LENGTH_OF_SIDE;
