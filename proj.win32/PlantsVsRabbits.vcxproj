@@ -146,6 +146,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClCompile Include="..\Classes\Carrot.cpp" />
     <ClCompile Include="..\Classes\CarrotManger.cpp" />
     <ClCompile Include="..\Classes\DifficultyScene.cpp" />
+    <ClCompile Include="..\Classes\EnemyAttackStrategy.cpp" />
     <ClCompile Include="..\Classes\EnemyManger.cpp" />
     <ClCompile Include="..\Classes\Entity.cpp" />
     <ClCompile Include="..\Classes\EvilRabbit.cpp" />
@@ -176,6 +177,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClInclude Include="..\Classes\Carrot.h" />
     <ClInclude Include="..\Classes\CarrotManger.h" />
     <ClInclude Include="..\Classes\DifficultyScene.h" />
+    <ClInclude Include="..\Classes\EnemyAttackStrategy.h" />
     <ClInclude Include="..\Classes\EnemyManger.h" />
     <ClInclude Include="..\Classes\Entity.h" />
     <ClInclude Include="..\Classes\EvilRabbit.h" />
@@ -186,6 +188,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClInclude Include="..\Classes\GameSettings.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\MusicScene.h" />
+    <ClInclude Include="..\Classes\MyList.h" />
     <ClInclude Include="..\Classes\PeaShooter.h" />
     <ClInclude Include="..\Classes\PeaShooterManger.h" />
     <ClInclude Include="..\Classes\PlantManger.h" />

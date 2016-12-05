@@ -7,7 +7,7 @@
 
 #define INTERVAL_TIME 0.1
 
-#define INITIAL_SUNSHINE 450
+#define INITIAL_SUNSHINE 4500
 
 
 /* Priority */

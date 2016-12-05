@@ -126,6 +126,9 @@
     <ClCompile Include="..\Classes\DifficultyScene.cpp">
       <Filter>src\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\EnemyAttackStrategy.cpp">
+      <Filter>src\Rabbits</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -214,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\DifficultyScene.h">
       <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MyList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyAttackStrategy.h">
+      <Filter>src\Rabbits</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

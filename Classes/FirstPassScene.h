@@ -15,6 +15,8 @@
 #include "EvilRabbitManger.h"
 #include "EnemyManger.h"
 
+#include "MyList.h"
+
 #include <vector>
 
 #include "EnemyAttackStrategy.h"
@@ -47,11 +49,9 @@ public:
 	};
 
 private:
-	std::vector<Command> commandVector;
-	int currentSize;	/* size of commands from begin to this time (without undo commands) */
+	MyList<Command> commandVector;
 
 public:
-	void addPlantToVector(int rowNumber, int columnNumber, int plantNumber);
 	void unProducePlants();
 	void reProducePlants();
 
