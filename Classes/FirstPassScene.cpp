@@ -33,7 +33,6 @@ bool FirstPass::init(){
 	this->addChild(rainPicture);
 
 	/* redo/undo pattern */
-	currentSize = 0;
 	auto undoButton = MenuItemImage::create(
 		"undo.png",
 		"undo.png",
@@ -403,22 +402,22 @@ bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) 
 		case NUMBER_OF_PEASHOOTER:
 			PlantStrategy(myPeaShooterManger);
 			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_PEASHOOTER);
+			commandVector.addItem(Command{ rowNumber, columnNumber, NUMBER_OF_PEASHOOTER });
 			break;
 		case NUMBER_OF_CARROT:
 			PlantStrategy(myCarrotManger);
 			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_CARROT);
+			commandVector.addItem(Command{ rowNumber, columnNumber, NUMBER_OF_CARROT});
 			break;
 		case NUMBER_OF_SUNFLOWER:
 			PlantStrategy(mySunflowerManger);
 			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_SUNFLOWER);
+			commandVector.addItem(Command{ rowNumber, columnNumber, NUMBER_OF_SUNFLOWER});
 			break;
 		case NUMBER_OF_WALLNUT:
 			PlantStrategy(myWallNutManger);
 			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			addPlantToVector(rowNumber, columnNumber, NUMBER_OF_WALLNUT);
+			commandVector.addItem(Command{ rowNumber, columnNumber, NUMBER_OF_WALLNUT});
 			break;
 		case NUMBER_OF_BLUEEGG:
 			PlantStrategy(myBlueEggManger);
@@ -467,69 +466,55 @@ bool FirstPass::producePlants(int rowNumber, int columnNumber, int plantNumber) 
 }
 
 void FirstPass::unProducePlants() {
-	if (currentSize > 0) {
-		currentSize--;
-		int rowNumber = commandVector.at(currentSize).rowNumber;
-		int columnNumber = commandVector.at(currentSize).columnNumber;
-		switch (commandVector.at(currentSize).plantNumber) {
-		case NUMBER_OF_PEASHOOTER:
-			myPeaShooterManger->removePlant(rowNumber, columnNumber);
-			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_PEASHOOTER;
-			break;
-		case NUMBER_OF_CARROT:
-			myCarrotManger->removePlant(rowNumber, columnNumber);
-			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_CARROT;
-			break;
-		case NUMBER_OF_SUNFLOWER:
-			mySunflowerManger->removePlant(rowNumber, columnNumber);
-			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_SUNFLOWER;
-			break;
-		case NUMBER_OF_WALLNUT:
-			myWallNutManger->removePlant(rowNumber, columnNumber);
-			myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
-			mySunshine += PRICE_OF_WALLNUT;
-			break;
-		default:
-			break;
-		}
-	} 
-}
-
-void FirstPass::reProducePlants(){
-	if (currentSize < commandVector.size()) {
-		int rowNumber = commandVector.at(currentSize).rowNumber;
-		int columnNumber = commandVector.at(currentSize).columnNumber;
-		switch (commandVector.at(currentSize).plantNumber) {
-		case NUMBER_OF_PEASHOOTER:
-			PlantStrategy(myPeaShooterManger);
-			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			break;
-		case NUMBER_OF_CARROT:
-			PlantStrategy(myCarrotManger);
-			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			break;
-		case NUMBER_OF_SUNFLOWER:
-			PlantStrategy(mySunflowerManger);
-			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			break;
-		case NUMBER_OF_WALLNUT:
-			PlantStrategy(myWallNutManger);
-			ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
-			break;
-		}
-		currentSize++;
+	auto command = commandVector.deleteItem();
+	int rowNumber = command.rowNumber;
+	int columnNumber = command.columnNumber;
+	switch (command.plantNumber) {
+	case NUMBER_OF_PEASHOOTER:
+		myPeaShooterManger->removePlant(rowNumber, columnNumber);
+		myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+		mySunshine += PRICE_OF_PEASHOOTER;
+		break;
+	case NUMBER_OF_CARROT:
+		myCarrotManger->removePlant(rowNumber, columnNumber);
+		myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+		mySunshine += PRICE_OF_CARROT;
+		break;
+	case NUMBER_OF_SUNFLOWER:
+		mySunflowerManger->removePlant(rowNumber, columnNumber);
+		myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+		mySunshine += PRICE_OF_SUNFLOWER;
+		break;
+	case NUMBER_OF_WALLNUT:
+		myWallNutManger->removePlant(rowNumber, columnNumber);
+		myMapOfPlant[rowNumber][columnNumber] = NO_PLANT;
+		mySunshine += PRICE_OF_WALLNUT;
+		break;
+	default:
+		break;
 	}
 }
 
-void FirstPass::addPlantToVector(int rowNumber, int columnNumber, int plantNumber) {
-	if (currentSize < commandVector.size()) {
-		while (currentSize < commandVector.size()) {
-			commandVector.pop_back();
-		}
-	} 
-	commandVector.push_back(Command{ rowNumber, columnNumber, plantNumber });
-	currentSize++;
+void FirstPass::reProducePlants(){
+	auto command = commandVector.restoreItem();
+	int rowNumber = command.rowNumber;
+	int columnNumber = command.columnNumber;
+	switch (command.plantNumber) {
+	case NUMBER_OF_PEASHOOTER:
+		PlantStrategy(myPeaShooterManger);
+		ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+		break;
+	case NUMBER_OF_CARROT:
+		PlantStrategy(myCarrotManger);
+		ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+		break;
+	case NUMBER_OF_SUNFLOWER:
+		PlantStrategy(mySunflowerManger);
+		ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+		break;
+	case NUMBER_OF_WALLNUT:
+		PlantStrategy(myWallNutManger);
+		ExecutePlantStrategy(rowNumber, columnNumber, myMapOfPlant, mySunshine, myRefrigerateTime);
+		break;
+	}
 }

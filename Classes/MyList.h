@@ -69,7 +69,7 @@ T MyList<T>::restoreItem() {
 		return T();
 	}else {
 		current = current->next;
-		return current->previous->value;
+		return current->value;
 	}
 }
 
